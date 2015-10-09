@@ -1,16 +1,20 @@
 $(function(){
 
-  var startingBlocks = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
-  var shuffledBlocks = shuffle(startingBlocks);
-  var randomBlocks = startingBlocks.splice(3, 5);
-  var sortedBlocks = sortRandomBlocks(randomBlocks);
-  console.log(sortedBlocks);
+  var blockLimits = getBlockLimits();
+
+  function getBlockLimits() {
+    var startingBlocks = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+    var shuffledBlocks = shuffle(startingBlocks);
+    var randomBlocks = startingBlocks.splice(3, 5);
+    var blockLimits = sortRandomBlocks(randomBlocks);
+    return blockLimits;
+  }
   
-  var redLimit = sortedBlocks[0];
-  var whiteLimit1 = sortedBlocks[1];
-  var blueLimit = sortedBlocks[2];
-  var whiteLimit2 = sortedBlocks[3];
-  var yellowLimit = sortedBlocks[4];
+  var redLimit = blockLimits[0];
+  var whiteLimit1 = blockLimits[1];
+  var blueLimit = blockLimits[2];
+  var whiteLimit2 = blockLimits[3];
+  var yellowLimit = blockLimits[4];
 
   var redBlock = [];
   var whiteBlock1 = [];
