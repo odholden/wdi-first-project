@@ -1,17 +1,49 @@
 $(function(){
 
-  var startingBlocks = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+  var startingBlocks = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
   var shuffledBlocks = shuffle(startingBlocks);
   var randomBlocks = startingBlocks.splice(3, 5);
   var sortedBlocks = sortRandomBlocks(randomBlocks);
   console.log(sortedBlocks);
+  
   var redLimit = sortedBlocks[0];
   var whiteLimit1 = sortedBlocks[1];
   var blueLimit = sortedBlocks[2];
   var whiteLimit2 = sortedBlocks[3];
   var yellowLimit = sortedBlocks[4];
 
+  var redBlock = [];
+  var whiteBlock1 = [];
+  var blueBlock = [];
+  var whiteBlock2 = [];
+  var yellowBlock = [];
+  var whiteBlock3 = [];
 
+  for (var i = 0; i <= redLimit; i++) {
+      redBlock.push(i);
+  }
+  for (var i = (redLimit + 1); i <= whiteLimit1; i++) {
+      whiteBlock1.push(i);
+  }
+  for (var i = (whiteLimit1 + 1); i <= blueLimit; i++) {
+      blueBlock.push(i);
+  }
+  for (var i = (blueLimit + 1); i <= whiteLimit2; i++) {
+      whiteBlock2.push(i);
+  }
+  for (var i = (whiteLimit2 + 1); i <= yellowLimit; i++) {
+      yellowBlock.push(i);
+  }
+  for (var i = (yellowLimit + 1); i <= 24; i++) {
+      whiteBlock3.push(i);
+  }
+
+  console.log(redBlock);
+  console.log(whiteBlock1);
+  console.log(blueBlock);
+  console.log(whiteBlock2);
+  console.log(yellowBlock);
+  console.log(whiteBlock3);
 
   function shuffle(startingBlocks) {
     var i = startingBlocks.length,
