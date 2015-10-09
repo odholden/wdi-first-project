@@ -27,9 +27,22 @@ $(function(){
   }
 
   function getColors() {
-    var colors = ["red", "white", "blue", "green", "yellow", "black"];
+    var colors = ["#EF5350", "#FFA726", "#42A5F5", "#66BB6A", "#FFEE58", "white"];
     var shuffledColors = shuffle(colors);
     return shuffledColors;
+  }
+
+  function shuffle(array) {
+    var i = array.length,
+        j = 0,
+        temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1));
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp; 
+    }
+    return array;
   }
 
   function fillGrid(blocks, background) {
@@ -53,19 +66,6 @@ $(function(){
         block.push(i);
     }
     return block;
-  }
-
-  function shuffle(array) {
-    var i = array.length,
-        j = 0,
-        temp;
-    while (i--) {
-        j = Math.floor(Math.random() * (i+1));
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp; 
-    }
-    return array;
   }
 
   function sortRandomBlocks(randomBlocks) {
