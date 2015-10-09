@@ -1,17 +1,16 @@
 $(function(){
 
-  var startingBlocks = makeStartingBlocks();
+  var startingBlocks = $('li');
   var randomNumbers  = getRandomNumbers();
   var orderedNumbers = sortRandomNumbers(randomNumbers);
 
-  console.log(startingBlocks);
   console.log(orderedNumbers);
 
-
-  function makeStartingBlocks() {
-    var startingBlocks = $('li').toArray();
-    return startingBlocks;
-  }
+  // $.each(startingBlocks, function(i, value) {
+  //   if ($.inArray(startingBlocks[i], orderedNumbers) > -1) {
+  //     console.log(startingBlocks[i]);
+  //   }
+  // });  NOT WORKING
 
   function getRandomNumbers() {
     var randomNumbers  = [];
@@ -34,6 +33,7 @@ $(function(){
       randomNumbers.push(randomValue);
     }
     return randomNumbers;
+    //STILL A CHANCE OF A REPEAT NUMBER
   }
 
 
@@ -50,11 +50,44 @@ $(function(){
 
 //For each element in the startingBlocks array that has an index equal to that of one of the numbers in the orderedNumbers array:
 
+
+
  //split the startingBlocks array after that element,
+
+
+
  // define the split element as its own array.
 
-// $.each(startingBlocks, function() {
-//   if startingBlocks = 
-// })
+
+
+
+ correctBlocks = $('li');
+
+ arrayRed    = [0,1,2,3,4,5];
+ arrayWhite1 = [6,7,8];
+ arrayYellow = [9,10,11,12,13,14];
+ arrayWhite2 = [15,16,17,18,19];
+ arrayBlue   = [20,21,22];
+ arrayWhite3 = [23,24];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
