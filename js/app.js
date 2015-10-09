@@ -1,48 +1,24 @@
 $(function(){
 
   var startingBlocks = $('li');
-  var randomNumbers  = getRandomNumbers();
-  var orderedNumbers = sortRandomNumbers(randomNumbers);
+  var shuffledBlocks = shuffle(startingBlocks);
+  console.log(startingBlocks);
+  var randomBlocks = startingBlocks.splice(3, 5);
+  console.log(randomBlocks);
 
-  console.log(orderedNumbers);
 
-  // $.each(startingBlocks, function(i, value) {
-  //   if ($.inArray(startingBlocks[i], orderedNumbers) > -1) {
-  //     console.log(startingBlocks[i]);
-  //   }
-  // });  NOT WORKING
 
-  function getRandomNumbers() {
-    var randomNumbers  = [];
-
-    function checkArray(randomValue, randomNumbers) {
-      return randomNumbers.indexOf(randomValue) > -1;
-      console.log(randomNumbers);
+  function shuffle(startingBlocks) {
+    var i = startingBlocks.length,
+        j = 0,
+        temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1));
+        temp = startingBlocks[i];
+        startingBlocks[i] = startingBlocks[j];
+        startingBlocks[j] = temp; 
     }
-
-    for (var i = 0; i < 5; i++) {
-      var randomValue = Math.floor(Math.random()*24);
-      var repeat = checkArray(randomValue, randomNumbers); 
-      if (repeat == false) {
-        randomNumbers.push(randomValue);
-      } 
-    }
-
-    if (randomNumbers.length < 5) {
-      var randomValue = Math.floor(Math.random()*24);
-      randomNumbers.push(randomValue);
-    }
-    return randomNumbers;
-    //STILL A CHANCE OF A REPEAT NUMBER
-  }
-
-
-  function sortRandomNumbers(randomNumbers) {
-    randomNumbers.sort(function(a,b) {
-      return a-b;
-    });
-    randomNumbers.push(24);
-    return randomNumbers;
+    return startingBlocks;
   }
 
 });
