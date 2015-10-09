@@ -4,23 +4,24 @@ $(function(){
   makeGrid(gridSize);
 
   function makeGrid(gridSize) {
-  var blocks      = makeBlocks();
-  var redBlock = fillGrid(blocks[0], "red");
-  var whiteBlock = fillGrid(blocks[1], "white");
-  var blueBlock = fillGrid(blocks[2], "blue");
-  var greenBlock = fillGrid(blocks[3], "green");
-  var yellowBlock = fillGrid(blocks[4], "yellow");
-  var blackBlock = fillGrid(blocks[5], "black");
+  var blocks = makeBlocks();
+  var colors = getColors();
+  var block0 = fillGrid(blocks[0], "red");
+  var block1 = fillGrid(blocks[1], "white");
+  var block2 = fillGrid(blocks[2], "blue");
+  var block3 = fillGrid(blocks[3], "green");
+  var block4 = fillGrid(blocks[4], "yellow");
+  var block5 = fillGrid(blocks[5], "black");
   }
 
   function makeBlocks() {
     var blockLimits = getBlockLimits();
-    var block1 = getBlock(-1, blockLimits[0]);
-    var block2 = getBlock(blockLimits[0], blockLimits[1]);
-    var block3 = getBlock(blockLimits[1], blockLimits[2]);
-    var block4 = getBlock(blockLimits[2], blockLimits[3]);
-    var block5 = getBlock(blockLimits[3], blockLimits[4]);
-    var block6 = getBlock(blockLimits[4], gridSize - 1);
+    var block0 = getBlock(-1, blockLimits[0]);
+    var block1 = getBlock(blockLimits[0], blockLimits[1]);
+    var block2 = getBlock(blockLimits[1], blockLimits[2]);
+    var block3 = getBlock(blockLimits[2], blockLimits[3]);
+    var block4 = getBlock(blockLimits[3], blockLimits[4]);
+    var block5 = getBlock(blockLimits[4], gridSize - 1);
     return blocks = [block1, block2, block3, block4, block5, block6];
   }
 
