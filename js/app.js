@@ -4,30 +4,19 @@ $(function(){
   var blocks      = makeBlocks();
   var colorGrid   = fillGrid(blocks);
 
-  function fillGrid(blocks) {
-    var redBlock = blocks[0];
-    for (var i = 0; i < redBlock.length; i++) {
-      $("li#"+redBlock[i]).css("background-color","red");       
-    }
-    var greenBlock = blocks[3];
-    for (var i = 0; i < greenBlock.length; i++) {
-      $("li#"+greenBlock[i]).css("background-color","green");       
-    }
-    var blueBlock = blocks[2];
-    for (var i = 0; i < blueBlock.length; i++) {
-      $("li#"+blueBlock[i]).css("background-color","blue");       
-    }
-    var whiteBlock = blocks[1];
-    for (var i = 0; i < whiteBlock.length; i++) {
-      $("li#"+whiteBlock[i]).css("background-color","white");       
-    }
-    var yellowBlock = blocks[4];
-    for (var i = 0; i < yellowBlock.length; i++) {
-      $("li#"+yellowBlock[i]).css("background-color","yellow");       
-    }
-    var blackBlock = blocks[5];
-    for (var i = 0; i < blackBlock.length; i++) {
-      $("li#"+blackBlock[i]).css("background-color","black");       
+  var redBlock = fillGrid(blocks[0], "red");
+  var whiteBlock = fillGrid(blocks[1], "white");
+  var blueBlock = fillGrid(blocks[2], "blue");
+  var greenBlock = fillGrid(blocks[3], "green");
+  var yellowBlock = fillGrid(blocks[4], "yellow");
+  var blackBlock = fillGrid(blocks[5], "black");
+
+
+
+
+  function fillGrid(blocks, background) {
+    for (var i = 0; i < blocks.length; i++) {
+      $("li#"+blocks[i]).css("background-color", background);       
     }
   }
 
