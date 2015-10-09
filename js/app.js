@@ -1,10 +1,40 @@
 $(function(){
 
-  var blocks   = makeBlocks();
-  var redBlock = blocks[0];
-  var $lis   = $('li');
-  console.log($lis);
+  var blocks    = makeBlocks();
+  var colorGrid = fillGrid(blocks);
 
+  function fillGrid(blocks) {
+    var redBlock = blocks[0];
+    console.log(redBlock);
+    for (var i = 0; i < redBlock.length; i++) {
+      $("li#"+redBlock[i]).css("background-color","red");       
+    }
+    var greenBlock = blocks[1];
+    console.log(greenBlock);
+    for (var i = 0; i < greenBlock.length; i++) {
+      $("li#"+greenBlock[i]).css("background-color","green");       
+    }
+    var blueBlock = blocks[2];
+    console.log(blueBlock);
+    for (var i = 0; i < blueBlock.length; i++) {
+      $("li#"+blueBlock[i]).css("background-color","blue");       
+    }
+    var whiteBlock = blocks[3];
+    console.log(whiteBlock);
+    for (var i = 0; i < whiteBlock.length; i++) {
+      $("li#"+whiteBlock[i]).css("background-color","white");       
+    }
+    var yellowBlock = blocks[4];
+    console.log(yellowBlock);
+    for (var i = 0; i < yellowBlock.length; i++) {
+      $("li#"+yellowBlock[i]).css("background-color","yellow");       
+    }
+    var blackBlock = blocks[5];
+    console.log(blackBlock);
+    for (var i = 0; i < blackBlock.length; i++) {
+      $("li#"+blackBlock[i]).css("background-color","black");       
+    }
+  }
 
   function makeBlocks() {
     var blockLimits = getBlockLimits();
