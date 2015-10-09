@@ -1,23 +1,16 @@
 $(function(){
 
   var gridSize    = $('li').length;
-  var blocks      = makeBlocks();
-  var colorGrid   = fillGrid(blocks);
+  makeGrid(gridSize);
 
+  function makeGrid(gridSize) {
+  var blocks      = makeBlocks();
   var redBlock = fillGrid(blocks[0], "red");
   var whiteBlock = fillGrid(blocks[1], "white");
   var blueBlock = fillGrid(blocks[2], "blue");
   var greenBlock = fillGrid(blocks[3], "green");
   var yellowBlock = fillGrid(blocks[4], "yellow");
   var blackBlock = fillGrid(blocks[5], "black");
-
-
-
-
-  function fillGrid(blocks, background) {
-    for (var i = 0; i < blocks.length; i++) {
-      $("li#"+blocks[i]).css("background-color", background);       
-    }
   }
 
   function makeBlocks() {
@@ -28,15 +21,18 @@ $(function(){
     var block4 = getBlock(blockLimits[2], blockLimits[3]);
     var block5 = getBlock(blockLimits[3], blockLimits[4]);
     var block6 = getBlock(blockLimits[4], gridSize - 1);
-
     return blocks = [block1, block2, block3, block4, block5, block6];
+  }
 
+  function fillGrid(blocks, background) {
+    for (var i = 0; i < blocks.length; i++) {
+      $("li#"+blocks[i]).css("background-color", background);       
+    }
   }
 
   function getBlockLimits() {
     var startingBlocks = [];
     for (var i = 1; i <= gridSize - 2; i++) {startingBlocks.push(i)}
-    console.log(startingBlocks);
     var shuffledBlocks = shuffle(startingBlocks);
     var randomBlocks = startingBlocks.splice(3, 5);
     var blockLimits = sortRandomBlocks(randomBlocks);
