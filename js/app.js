@@ -1,12 +1,16 @@
 $(function(){
 
-  makeStartingBlocks();
+  var startingBlocks = makeStartingBlocks();
+  var randomNumbers  = getRandomNumbers();
+  var orderedNumbers = sortRandomNumbers(randomNumbers);
+
+  console.log(startingBlocks);
+  console.log(orderedNumbers);
+
 
   function makeStartingBlocks() {
     var startingBlocks = $('li').toArray();
-    var randomNumbers  = getRandomNumbers();
-    var orderedNumbers = sortRandomNumbers(randomNumbers);
-    console.log(orderedNumbers);
+    return startingBlocks;
   }
 
   function getRandomNumbers() {
@@ -22,7 +26,12 @@ $(function(){
       var repeat = checkArray(randomValue, randomNumbers); 
       if (repeat == false) {
         randomNumbers.push(randomValue);
-      }
+      } 
+    }
+
+    if (randomNumbers.length < 5) {
+      var randomValue = Math.floor(Math.random()*24);
+      randomNumbers.push(randomValue);
     }
     return randomNumbers;
   }
@@ -37,5 +46,15 @@ $(function(){
   }
 
 });
+
+
+//For each element in the startingBlocks array that has an index equal to that of one of the numbers in the orderedNumbers array:
+
+ //split the startingBlocks array after that element,
+ // define the split element as its own array.
+
+// $.each(startingBlocks, function() {
+//   if startingBlocks = 
+// })
 
 
