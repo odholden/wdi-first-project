@@ -1,123 +1,8 @@
-/*body {
-  font-family: helvetica;
-}
+/*app for design inspiraton  http://nizoapp.com/
+  bg color #deddd8
+  font "proxima-nova-1", "proxima-nova-2", Helvetica, sans-serif
+  potential text color (as well as white): #888*/
 
-header {
-  height: 150px;
-  background: grey;
-}
-
-h1 {
-  text-align: center;
-  color: white;
-  font-size: 40px;
-  line-height: 150px;
-}
-
-ul {
-  margin: 30px auto;
-  border: 2px solid black;
-  width: 400px;
-  height: 400px;
-}
-
-li {
-  border: 1px solid black;
-  float: left;
-  display: inline;
-}
-
-ul li:nth-child(1) {
-  width: 78px;
-  height: 118px;
-}
-
-ul li:nth-child(2) {
-  width: 148px;
-  height: 118px;
-  background: red;
-}
-
-ul li:nth-child(3) {
-  width: 128px;
-  height: 118px;
-}
-
-ul li:nth-child(4) {
-  width: 38px;
-  height: 248px;
-  float: right;
-  background: red;
-}
-
-ul li:nth-child(5) {
-  width: 78px;
-  height: 128px;
-  background: yellow;
-}
-
-ul li:nth-child(6) {
-  width: 148px;
-  height: 128px;
-}
-
-ul li:nth-child(7) {
-  width: 38px;
-  height: 128px;
-  background: blue;
-
-}
-
-ul li:nth-child(8) {
-  width: 88px;
-  height: 128px;
-}
-
-ul li:nth-child(9) {
-  width: 78px;
-  height: 68px;
-  background: yellow;
-
-}
-
-ul li:nth-child(10) {
-  width: 188px;
-  height: 68px;
-}
-
-ul li:nth-child(11) {
-  width: 88px;
-  height: 68px;
-  background: yellow;
-}
-
-ul li:nth-child(12) {
-  width: 38px;
-  height: 68px;
-}
-
-ul li:nth-child(13) {
-  width: 78px;
-  height: 78px;
-}
-
-ul li:nth-child(14) {
-  width: 188px;
-  height: 78px;
-  background: blue;
-
-}
-
-ul li:nth-child(15) {
-  width: 88px;
-  height: 78px;
-}
-
-ul li:nth-child(16) {
-  width: 38px;
-  height: 78px;
-  background: red;
-}*/
 
 
 
@@ -143,8 +28,8 @@ h1 {
 ul {
   margin: 30px auto;
   border: 1px solid black;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   background: white;
   font-size: 
 }
@@ -153,97 +38,6 @@ li {
   border: 1px solid black;
   float: left;
   display: inline;
-}
-
-
-
-ul li:nth-child(1) {
-  width: 48px;
-  height: 38px;
-}
-
-ul li:nth-child(2) {
-  width: 168px;
-  height: 38px;
-}
-
-ul li:nth-child(3) {
-  width: 178px;
-  height: 38px;
-  background: blue;
-}
-
-ul li:nth-child(4) {
-  width: 218px;
-  height: 228px;
-  background: red;
-}
-
-ul li:nth-child(5) {
-  width: 48px;
-  height: 48px;
-}
-
-ul li:nth-child(6) {
-  width: 128px;
-  height: 48px;
-  background: yellow;
-}
-
-ul li:nth-child(7) {
-  width: 128px;
-  height: 238px;
-  float: right;
-  background: yellow;
-
-}
-
-ul li:nth-child(8) {
-  width: 48px;
-  height: 238px;
-  float: right;
-}
-
-ul li:nth-child(9) {
-  width: 158px;
-  height: 58px;
-}
-
-ul li:nth-child(10) {
-  width: 58px;
-  height: 58px;
-  background: blue;
-}
-
-ul li:nth-child(11) {
-  width: 218px;
-  height: 28px;
-}
-
-ul li:nth-child(12) {
-  width: 48px;
-  height: 28px;
-  background: red;
-}
-
-ul li:nth-child(13) {
-  width: 128px;
-  height: 28px;
-}
-
-ul li:nth-child(14) {
-  width: 218px;
-  height: 38px;
-  background: yellow;
-}
-
-ul li:nth-child(15) {
-  width: 48px;
-  height: 38px;
-}
-
-ul li:nth-child(16) {
-  width: 128px;
-  height: 38px;
-  background: blue;
+  width: 98px;
+  height: 98px;
 }
