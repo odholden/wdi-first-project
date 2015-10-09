@@ -4,8 +4,7 @@ $(function(){
 
   function makeStartingBlocks() {
     var startingBlocks = $('li').toArray();
-    getRandomNumbers();
-    sortRandomNumbers(randomNumbers);
+    var randomNumbers  = getRandomNumbers();
   }
 
   function getRandomNumbers() {
