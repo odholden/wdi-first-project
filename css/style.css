@@ -4,35 +4,50 @@
   potential text color (as well as white): #888*/
 
 body {
-  background-color: #deddd8;
-}
-
-header {
-  height: 150px;
-}
-
-h1 {
   font-family: "proxima-nova-1", "proxima-nova-2", Helvetica, sans-serif;
+  background-color: #78909C;
+  color: white;
   font-weight: bold;
   font-variant: small-caps;
   text-align: center;
-  color: white;
-  font-size: 80px;
-  line-height: 150px;
+
+}
+
+header {
+  height: 100px;
+}
+
+h1 {
+  font-size: 100px;
+  line-height: 100px;
   letter-spacing: -3px;
+}
+
+#start {
+  margin: 0 auto 10px auto;
+  height: 30px;
+  width: 100px;
+  border: 1px solid white;
+  line-height: 20px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  font-variant: small-caps;
+  text-align: center;
+  background: none;
+  vertical-align: middle;
 }
 
 ul {
   margin: 30px auto;
-  border: 1px solid black;
+  border: 1px solid white;
   width: 500px;
   height: 500px;
   background: white;
-  font-size: 
 }
 
 li {
-  border: 1px solid black;
+  border: 1px solid white;
   float: left;
   display: inline;
   width: 98px;
