@@ -4,14 +4,15 @@ $(function(){
   makeGrid(gridSize);
 
   function makeGrid(gridSize) {
-  var blocks = makeBlocks();
-  var colors = getColors();
-  var block0 = fillGrid(blocks[0], "red");
-  var block1 = fillGrid(blocks[1], "white");
-  var block2 = fillGrid(blocks[2], "blue");
-  var block3 = fillGrid(blocks[3], "green");
-  var block4 = fillGrid(blocks[4], "yellow");
-  var block5 = fillGrid(blocks[5], "black");
+    var blocks = makeBlocks();
+    var colors = getColors();
+    console.log(colors);
+    var block0 = fillGrid(blocks[0], colors[0]);
+    var block1 = fillGrid(blocks[1], colors[1]);
+    var block2 = fillGrid(blocks[2], colors[2]);
+    var block3 = fillGrid(blocks[3], colors[3]);
+    var block4 = fillGrid(blocks[4], colors[4]);
+    var block5 = fillGrid(blocks[5], colors[5]);
   }
 
   function makeBlocks() {
@@ -22,7 +23,13 @@ $(function(){
     var block3 = getBlock(blockLimits[2], blockLimits[3]);
     var block4 = getBlock(blockLimits[3], blockLimits[4]);
     var block5 = getBlock(blockLimits[4], gridSize - 1);
-    return blocks = [block1, block2, block3, block4, block5, block6];
+    return blocks = [block0, block1, block2, block3, block4, block5];
+  }
+
+  function getColors() {
+    var colors = ["red", "white", "blue", "green", "yellow", "black"];
+    var shuffledColors = shuffle(colors);
+    return shuffledColors;
   }
 
   function fillGrid(blocks, background) {
@@ -48,17 +55,17 @@ $(function(){
     return block;
   }
 
-  function shuffle(startingBlocks) {
-    var i = startingBlocks.length,
+  function shuffle(array) {
+    var i = array.length,
         j = 0,
         temp;
     while (i--) {
         j = Math.floor(Math.random() * (i+1));
-        temp = startingBlocks[i];
-        startingBlocks[i] = startingBlocks[j];
-        startingBlocks[j] = temp; 
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp; 
     }
-    return startingBlocks;
+    return array;
   }
 
   function sortRandomBlocks(randomBlocks) {
