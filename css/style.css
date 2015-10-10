@@ -60,7 +60,7 @@ ul:nth-child(2) {
 
 }
 
-ul:nth-child(1) li {
+li {
   border: 1px solid white;
   float: left;
   display: inline;
@@ -68,7 +68,7 @@ ul:nth-child(1) li {
   height: 98px;
 }
 
-ul:nth-child(2) li {
+p {
   width: 110px;
   height: 30px;
   border: 2px solid white;
@@ -76,35 +76,35 @@ ul:nth-child(2) li {
   line-height: 30px;
 }
 
-ul:nth-child(2) li:nth-child(6) {
+p:nth-child(6) {
   color: black;
 }
 
-#green {
+.green {
   background-color: #66BB6A;
 }
 
-#red {
+.red {
   background-color: #EF5350;
 }
 
-#blue {
+.blue {
   background-color: #42A5F5;
 }
 
-#yellow {
+.yellow {
   background-color: #FFEE58;
 }
 
-#orange {
+.orange {
   background-color: #FFA726;
 }
 
-#white {
+.white {
   background-color: white;
 }
 
-#clear {
+.clear {
   background-color: #78909C;
 }
 

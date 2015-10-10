@@ -1,23 +1,29 @@
 $(function setup(){
 
-  $('.colorbutton').on("click", function() {
-    var color = $(this).attr('id');
-    console.log(color);
-    return color;
-  });
+  $('p').on("click", selectColor);
 
-  $('button').on("click", function(){
-    var correctGrid = makeGrid();
-    console.log(correctGrid);
-    setTimeout(clearGrid, 3000);
-  });
 
+  $('button').on("click", generateBoard);
   $('.square').on("click", function() {
-    $(this).attr('id', 'green');
+    console.log('workin');
+    $(this).toggleClass('green');
   });
 });
 
 //  CLEARS THE BOARD
+
+
+function selectColor() {
+  var color = $(this).attr('class');
+  console.log(color);
+  return color;
+}
+
+function generateBoard() {
+  var correctGrid = makeGrid();
+  console.log(correctGrid);
+  setTimeout(clearGrid, 3000);
+}
 
 function clearGrid() {
   $('.square').css('background-color', '#78909C');
