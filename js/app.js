@@ -6,14 +6,10 @@ $(function setup(){
   });
 
   $('li').on("click", function() {
-    if ($(this).css("background-color", "green")) {
-      $(this).css("background-color", "#78909C")
-    } else {
-      $(this).css("background-color", "green");
-    }
+    currentColor = 'green';
+    $(this).toggleClass(currentColor);
   });
 });
-
 
 
 
