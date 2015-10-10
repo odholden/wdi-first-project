@@ -51,7 +51,7 @@ function makeBlocks() {
 }
 
 function getColors() {
-  var colors         = ["#EF5350", "#FFA726", "#42A5F5", "#66BB6A", "#FFEE58", "white"];
+  var colors         = ["#EF5350", "#FFA726", "#42A5F5", "#66BB6A", "#FFEE58", "#AB47BC"];
   var shuffledColors = shuffle(colors);
   return shuffledColors;
 }
@@ -101,9 +101,18 @@ function sortRandomBlocks(randomBlocks) {
 
 
 
+$('p').on("click", selectColor);
 
+$('.square').on("click", function() {
+  console.log('workin');
+  $(this).toggleClass('green');
+});
 
-
+function selectColor() {
+  var color = $(this).attr('class');
+  console.log(color);
+  return color;
+}
 
 
 
