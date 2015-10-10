@@ -13,9 +13,7 @@ $(function setup(){
   });
 
   $('.square').on("click", function() {
-    if ($(this).attr('id'))  $(this).removeAttr('id');
-    else $(this).attr('id', 'green');
-    
+    $(this).attr('id', 'green');
   });
 });
 
