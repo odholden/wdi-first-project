@@ -3,6 +3,10 @@ $(function(){
     makeGrid();
     setTimeout(clearGrid, 3000);
   });
+
+  $('li').on("click", function() {
+    $(this).css("background-color", "green");
+  })
 });
 
 
