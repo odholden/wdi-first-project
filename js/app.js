@@ -6,7 +6,7 @@ $(function setup(){
   });
 
   $('li').on("click", function() {
-    currentColor = 'green';
+    var currentColor = 'green';
     $(this).toggleClass(currentColor);
   });
 });
