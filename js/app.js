@@ -1,6 +1,6 @@
 $(function setup(){
 
-  var currentColor = $('.colorbutton').on("click", function() {
+  $('.colorbutton').on("click", function() {
     var color = $(this).attr('id');
     console.log(color);
     return color;
@@ -13,7 +13,9 @@ $(function setup(){
   });
 
   $('.square').on("click", function() {
-    $(this).toggleClass(currentColor);
+    if ($(this).attr('id'))  $(this).removeAttr('id');
+    else $(this).attr('id', 'green');
+    
   });
 });
 
