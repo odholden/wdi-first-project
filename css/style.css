@@ -80,31 +80,31 @@ ul:nth-child(2) li:nth-child(6) {
   color: black;
 }
 
-.green {
+#green {
   background-color: #66BB6A;
 }
 
-.red {
+#red {
   background-color: #EF5350;
 }
 
-.blue {
+#blue {
   background-color: #42A5F5;
 }
 
-.yellow {
+#yellow {
   background-color: #FFEE58;
 }
 
-.orange {
+#orange {
   background-color: #FFA726;
 }
 
-.white {
+#white {
   background-color: white;
 }
 
-.clear {
+#clear {
   background-color: #78909C;
 }
 

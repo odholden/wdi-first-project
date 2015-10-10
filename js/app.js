@@ -1,6 +1,10 @@
 $(function setup(){
 
-  var currentColor = 'green';
+  var currentColor = $('.colorbutton').on("click", function() {
+    var color = $(this).attr('id');
+    console.log(color);
+    return color;
+  });
 
   $('button').on("click", function(){
     var correctGrid = makeGrid();
