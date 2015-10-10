@@ -1,13 +1,22 @@
-$(function(){
+$(function setup(){
   $('button').on("click", function(){
-    makeGrid();
+    var correctGrid = makeGrid();
+    console.log(correctGrid);
     setTimeout(clearGrid, 3000);
   });
 
   $('li').on("click", function() {
-    $(this).css("background-color", "green");
-  })
+    if ($(this).css("background-color", "green")) {
+      $(this).css("background-color", "#78909C")
+    } else {
+      $(this).css("background-color", "green");
+    }
+  });
 });
+
+
+
+
 
 
 
@@ -17,19 +26,14 @@ function clearGrid() {
   $('li').css("background-color", "#78909C");
 }
 
-
-
 // POPULATES THE GRID
 
 function makeGrid() {
-  var blocks = makeBlocks();
-  var colors = getColors();
-  var block0 = fillGrid(blocks[0], colors[0]);
-  var block1 = fillGrid(blocks[1], colors[1]);
-  var block2 = fillGrid(blocks[2], colors[2]);
-  var block3 = fillGrid(blocks[3], colors[3]);
-  var block4 = fillGrid(blocks[4], colors[4]);
-  var block5 = fillGrid(blocks[5], colors[5]);  
+  var blocks      = makeBlocks();
+  var colors      = getColors();
+  for (var i = 0; i <6; i++) fillGrid(blocks[i], colors[i]);
+  var correctGrid = [blocks, colors];
+  return correctGrid;
 }
 
 function makeBlocks() {
