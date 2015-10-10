@@ -1,25 +1,22 @@
 $(function setup(){
+
+  var currentColor = 'green';
+
   $('button').on("click", function(){
     var correctGrid = makeGrid();
     console.log(correctGrid);
     setTimeout(clearGrid, 3000);
   });
 
-  $('li').on("click", function() {
-    var currentColor = 'green';
+  $('.square').on("click", function() {
     $(this).toggleClass(currentColor);
   });
 });
 
-
-
-
-
-
 //  CLEARS THE BOARD
 
 function clearGrid() {
-  $('li').css("background-color", "#78909C");
+  $('.square').css('background-color', '#78909C');
 }
 
 // POPULATES THE GRID
