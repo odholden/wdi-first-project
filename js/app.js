@@ -14,12 +14,12 @@ function startGame() {
 
 function selectColors() {
   var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
-  $('li.red').removeClass('red').addClass('shadow1');
-  $('li.green').removeClass('green').addClass('shadow2');
-  $('li.orange').removeClass('orange').addClass('shadow3');
-  $('li.blue').removeClass('blue').addClass('shadow4');
-  $('li.yellow').removeClass('yellow').addClass('shadow5');
-  $('li.purple').removeClass('purple').addClass('shadow6');
+  $('li.red').removeClass().addClass('shadow1');
+  $('li.green').removeClass().addClass('shadow2');
+  $('li.orange').removeClass().addClass('shadow3');
+  $('li.blue').removeClass().addClass('shadow4');
+  $('li.yellow').removeClass().addClass('shadow5');
+  $('li.purple').removeClass().addClass('shadow6');
 
   $('li').on("click", function() {
     console.log('workin');
@@ -36,11 +36,6 @@ function selectColors() {
   //     $('#color').fadeIn('fast').addClass(colors[i+1]);
   //   }, (i*5000));
   // }
-
-  setTimeout(function() {
-    $('#color').removeClass(colors[0]);
-    $('#color').fadeIn('fast').addClass(colors[1]);
-  }, 5000);
 
   setTimeout(function() {
     $('#color').removeClass(colors[0]);
