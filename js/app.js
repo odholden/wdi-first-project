@@ -1,62 +1,70 @@
 $(function setup(){
-
   $('button').on("click", startGame);
-
 });
 
 function startGame() {
   var correctGrid = makeGrid();
+  var selectedGrid;
   console.log(correctGrid);
   setTimeout(selectColors, 5000); 
+  setTimeout(storeSelections, 35100);
 }
 
 //FUNCTIONS FOR PLAYING THE GAME
 
 function selectColors() {
-  var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
+  removeColors();
+  colorTimer();
+  $('li').on("click", function() {
+    $(this).removeClass();
+    $(this).toggleClass($('#color').attr('class'));
+  });
+}
+
+function storeSelections() {
+  var selectedGrid = [];
+  for (var i = 0; i < 25;i++) {
+    selectedGrid.push($('li#' + [i]).css("background-color"));
+  }
+  console.log(selectedGrid);
+  return selectedGrid;
+}
+
+function removeColors() {
   $('li.red').removeClass().addClass('shadow1');
   $('li.green').removeClass().addClass('shadow2');
   $('li.orange').removeClass().addClass('shadow3');
   $('li.blue').removeClass().addClass('shadow4');
   $('li.yellow').removeClass().addClass('shadow5');
   $('li.purple').removeClass().addClass('shadow6');
+}
 
-  $('li').on("click", function() {
-    console.log('workin');
-    $(this).removeClass();
-    $(this).toggleClass($('#color').attr('class'));
-  });
-
+function colorTimer() {
+  var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
   $('#color').fadeIn('fast').addClass(colors[0]);
-  var currentColor = colors[0];
-
+  var currentColor = colors[0];  
   // for (var i = 0; i<colors.length; i++) {
   //   setTimeout(function() {
   //     $('#color').removeClass(colors[i]);
   //     $('#color').fadeIn('fast').addClass(colors[i+1]);
   //   }, (i*5000));
-  // }
-
+  // } 
   setTimeout(function() {
     $('#color').removeClass(colors[0]);
     $('#color').fadeIn('fast').addClass(colors[1]);
-  }, 5000);
-
+  }, 5000); 
   setTimeout(function() {
     $('#color').removeClass(colors[1]);
     $('#color').fadeIn('fast').addClass(colors[2]);
   }, 10000);
-
   setTimeout(function() {
     $('#color').removeClass(colors[2]);
     $('#color').fadeIn('fast').addClass(colors[3]);
   }, 15000);
-
   setTimeout(function() {
     $('#color').removeClass(colors[3]);
     $('#color').fadeIn('fast').addClass(colors[4]);
   }, 20000);
-
   setTimeout(function() {
     $('#color').removeClass(colors[4]);
     $('#color').fadeIn('fast').addClass(colors[5]);
@@ -66,8 +74,6 @@ function selectColors() {
     $('#color').removeClass(colors[5]);
     $('#color').fadeIn('fast').addClass('clear');
   }, 30000);
-
-  // for (var i = 0; i < colors.length; i++)
 }
 
 //FUNCTIONS FOR GENERATING THE GRID
@@ -75,8 +81,11 @@ function selectColors() {
 function makeGrid() {
   var blocks      = makeBlocks();
   var colors      = getColors();
-  for (var i = 0; i <6; i++) fillGrid(blocks[i], colors[i]);
-  var correctGrid = {blocks, colors};
+  for (var i = 0; i < 6; i++) fillGrid(blocks[i], colors[i]);
+  var correctGrid = [];
+  for (var i = 0; i < 25;i++) {
+    correctGrid.push($('li#' + [i]).css("background-color"));
+  }
   return correctGrid;
 }
 
