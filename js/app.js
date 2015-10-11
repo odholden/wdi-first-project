@@ -10,47 +10,72 @@ function startGame() {
   setTimeout(selectColors, 5000); 
 }
 
+//FUNCTIONS FOR PLAYING THE GAME
+
 function selectColors() {
-  $('li').removeClass();
   var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
-  $('p').fadeIn('fast').addClass(colors[0]);
-  var currentColor = colors[0];
-
-  setTimeout(function() {
-    $('p').removeClass(colors[0]);
-    $('p').fadeIn('fast').addClass(colors[1]);
-  }, 5000);
-
-  setTimeout(function() {
-    $('p').removeClass(colors[1]);
-    $('p').fadeIn('fast').addClass(colors[2]);
-  }, 10000);
-
-  setTimeout(function() {
-    $('p').removeClass(colors[2]);
-    $('p').fadeIn('fast').addClass(colors[3]);
-  }, 15000);
-
-  setTimeout(function() {
-    $('p').removeClass(colors[3]);
-    $('p').fadeIn('fast').addClass(colors[4]);
-  }, 20000);
-
-  setTimeout(function() {
-    $('p').removeClass(colors[4]);
-    $('p').fadeIn('fast').addClass(colors[5]);
-  }, 25000);
-
-  setTimeout(function() {
-    $('p').removeClass(colors[5]);
-    $('p').fadeIn('fast').addClass('clear');
-  }, 30000);
+  $('li.red').removeClass('red').addClass('shadow1');
+  $('li.green').removeClass('green').addClass('shadow2');
+  $('li.orange').removeClass('orange').addClass('shadow3');
+  $('li.blue').removeClass('blue').addClass('shadow4');
+  $('li.yellow').removeClass('yellow').addClass('shadow5');
+  $('li.purple').removeClass('purple').addClass('shadow6');
 
   $('li').on("click", function() {
     console.log('workin');
-    $(this).toggleClass($('p').attr('class'));
+    $(this).removeClass();
+    $(this).toggleClass($('#color').attr('class'));
   });
+
+  $('#color').fadeIn('fast').addClass(colors[0]);
+  var currentColor = colors[0];
+
+  // for (var i = 0; i<colors.length; i++) {
+  //   setTimeout(function() {
+  //     $('#color').removeClass(colors[i]);
+  //     $('#color').fadeIn('fast').addClass(colors[i+1]);
+  //   }, (i*5000));
+  // }
+
+  setTimeout(function() {
+    $('#color').removeClass(colors[0]);
+    $('#color').fadeIn('fast').addClass(colors[1]);
+  }, 5000);
+
+  setTimeout(function() {
+    $('#color').removeClass(colors[0]);
+    $('#color').fadeIn('fast').addClass(colors[1]);
+  }, 5000);
+
+  setTimeout(function() {
+    $('#color').removeClass(colors[1]);
+    $('#color').fadeIn('fast').addClass(colors[2]);
+  }, 10000);
+
+  setTimeout(function() {
+    $('#color').removeClass(colors[2]);
+    $('#color').fadeIn('fast').addClass(colors[3]);
+  }, 15000);
+
+  setTimeout(function() {
+    $('#color').removeClass(colors[3]);
+    $('#color').fadeIn('fast').addClass(colors[4]);
+  }, 20000);
+
+  setTimeout(function() {
+    $('#color').removeClass(colors[4]);
+    $('#color').fadeIn('fast').addClass(colors[5]);
+  }, 25000);
+
+  setTimeout(function() {
+    $('#color').removeClass(colors[5]);
+    $('#color').fadeIn('fast').addClass('clear');
+  }, 30000);
+
+  // for (var i = 0; i < colors.length; i++)
 }
+
+//FUNCTIONS FOR GENERATING THE GRID
 
 function makeGrid() {
   var blocks      = makeBlocks();

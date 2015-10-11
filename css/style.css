@@ -57,16 +57,16 @@ ul:nth-child(1) {
   left: 30%;
 }
 
-div:nth-child(2) {
-  margin: 30px 0px;
+#color {
+  margin: 130px 0px;
   width: 250px;
-  height: 500px;
+  height: 250px;
   border: 6px solid white;
   position: absolute;
   left: 5%;
 }
 
-div:nth-child(3) {
+#player {
   margin: 30px 0px;
   width: 250px;
   height: 500px;
@@ -81,14 +81,6 @@ li {
   display: inline;
   width: 98px;
   height: 98px;
-}
-
-p {
-  width: 120px;
-  height: 120px;
-  border: 2px solid white;
-  margin: 20px auto;
-  line-height: 30px;
 }
 
 .green {
@@ -119,3 +111,27 @@ p {
   background-color: #78909C;
 }
 
+.shadow1 {
+  background-color: #CFD8DC;
+}
+
+.shadow2 {
+  background-color: #B0BEC5;
+}
+
+.shadow3 {
+  background-color: #90A4AE;
+}
+
+.shadow4 {
+  background-color: #607D8B;
+}
+
+.shadow5 {
+  background-color: #546E7A;
+}
+
+
+.shadow6 {
+  background-color: #78909C;
+}
