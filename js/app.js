@@ -7,15 +7,48 @@ $(function setup(){
 function startGame() {
   var correctGrid = makeGrid();
   console.log(correctGrid);
-  setTimeout(clearGrid, 3000);
-  $('li').on("click", function() {
-    console.log('workin');
-    $(this).toggleClass('green');
-  });
+  setTimeout(selectColors, 5000); 
 }
 
-function clearGrid() {
+function selectColors() {
   $('li').removeClass();
+  var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
+  $('p').addClass(colors[0]);
+
+  setTimeout(function() {
+    $('p').removeClass(colors[0]);
+    $('p').addClass(colors[1]);
+  }, 5000);
+
+  setTimeout(function() {
+    $('p').removeClass(colors[1]);
+    $('p').addClass(colors[2]);
+  }, 10000);
+
+  setTimeout(function() {
+    $('p').removeClass(colors[2]);
+    $('p').addClass(colors[3]);
+  }, 15000);
+
+  setTimeout(function() {
+    $('p').removeClass(colors[3]);
+    $('p').addClass(colors[4]);
+  }, 20000);
+
+  setTimeout(function() {
+    $('p').removeClass(colors[4]);
+    $('p').addClass(colors[5]);
+  }, 25000);
+
+  setTimeout(function() {
+    $('p').removeClass(colors[5]);
+    $('p').addClass('clear');
+  }, 30000);
+
+  $('li').on("click", function() {
+    console.log('workin');
+    $(this).toggleClass(currentColor);
+  });
 }
 
 function makeGrid() {
@@ -38,7 +71,7 @@ function makeBlocks() {
 }
 
 function getColors() {
-  var colors         = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
+  var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
   var shuffledColors = shuffle(colors);
   return shuffledColors;
 }
