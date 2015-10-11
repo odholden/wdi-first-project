@@ -13,12 +13,12 @@ function startGame() {
 function selectColors() {
   $('li').removeClass();
   var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
-  $('p').fadeIn('slow').addClass(colors[0]);
+  $('p').fadeIn('fast').addClass(colors[0]);
   var currentColor = colors[0];
 
   setTimeout(function() {
     $('p').removeClass(colors[0]);
-    $('p').fadeIn('slow').addClass(colors[1]);
+    $('p').fadeIn('fast').addClass(colors[1]);
   }, 5000);
 
   setTimeout(function() {
@@ -48,7 +48,7 @@ function selectColors() {
 
   $('li').on("click", function() {
     console.log('workin');
-    $(this).toggleClass(currentColor);
+    $(this).toggleClass($('p').attr('class'));
   });
 }
 
