@@ -8,7 +8,6 @@ body {
   background-color: #78909C;
   color: white;
   font-weight: bold;
-  font-variant: small-caps;
   text-align: center;
 
 }
@@ -21,6 +20,14 @@ h1 {
   font-size: 100px;
   line-height: 100px;
   letter-spacing: -4px;
+  font-variant: small-caps;
+
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 50px;
+  letter-spacing: -2px;
 }
 
 #start {
@@ -29,10 +36,9 @@ h1 {
   width: 110px;
   border: 2px solid white;
   line-height: 20px;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   font-weight: bold;
-  font-variant: small-caps;
   text-align: center;
   background: none;
   vertical-align: middle;
@@ -51,13 +57,22 @@ ul:nth-child(1) {
   left: 30%;
 }
 
-ul:nth-child(2) {
+div:nth-child(2) {
   margin: 30px 0px;
-  width: 120px;
-  height: 400px;
+  width: 250px;
+  height: 500px;
+  border: 2px solid white;
   position: absolute;
-  left: 10%;
+  left: 5%;
+}
 
+div:nth-child(3) {
+  margin: 30px 0px;
+  width: 250px;
+  height: 500px;
+  border: 2px solid white;
+  position: absolute;
+  right: 5%;
 }
 
 li {
@@ -69,15 +84,11 @@ li {
 }
 
 p {
-  width: 110px;
-  height: 30px;
+  width: 120px;
+  height: 120px;
   border: 2px solid white;
   margin: 20px auto;
   line-height: 30px;
-}
-
-p:nth-child(6) {
-  color: black;
 }
 
 .green {

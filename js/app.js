@@ -1,41 +1,28 @@
 $(function setup(){
 
-  $('p').on("click", selectColor);
+  $('button').on("click", startGame);
 
-
-  $('button').on("click", generateBoard);
-  $('.square').on("click", function() {
-    console.log('workin');
-    $(this).toggleClass('green');
-  });
 });
 
-//  CLEARS THE BOARD
-
-
-function selectColor() {
-  var color = $(this).attr('class');
-  console.log(color);
-  return color;
-}
-
-function generateBoard() {
+function startGame() {
   var correctGrid = makeGrid();
   console.log(correctGrid);
   setTimeout(clearGrid, 3000);
+  $('li').on("click", function() {
+    console.log('workin');
+    $(this).toggleClass('green');
+  });
 }
 
 function clearGrid() {
-  $('.square').css('background-color', '#78909C');
+  $('li').removeClass();
 }
-
-// POPULATES THE GRID
 
 function makeGrid() {
   var blocks      = makeBlocks();
   var colors      = getColors();
   for (var i = 0; i <6; i++) fillGrid(blocks[i], colors[i]);
-  var correctGrid = [blocks, colors];
+  var correctGrid = {blocks, colors};
   return correctGrid;
 }
 
@@ -51,7 +38,7 @@ function makeBlocks() {
 }
 
 function getColors() {
-  var colors         = ["#EF5350", "#FFA726", "#42A5F5", "#66BB6A", "#FFEE58", "#AB47BC"];
+  var colors         = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
   var shuffledColors = shuffle(colors);
   return shuffledColors;
 }
@@ -71,7 +58,7 @@ function shuffle(array) {
 
 function fillGrid(blocks, background) {
   for (var i = 0; i < blocks.length; i++) {
-    $("li#"+blocks[i]).css("background-color", background);       
+    $("li#"+blocks[i]).addClass(background);       
   }
 }
 
@@ -98,26 +85,6 @@ function sortRandomBlocks(randomBlocks) {
   });
   return randomBlocks;
 }
-
-
-
-$('p').on("click", selectColor);
-
-$('.square').on("click", function() {
-  console.log('workin');
-  $(this).toggleClass('green');
-});
-
-function selectColor() {
-  var color = $(this).attr('class');
-  console.log(color);
-  return color;
-}
-
-
-
-
-
 
 
 
