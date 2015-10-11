@@ -2,11 +2,16 @@ $(function setup(){
   $('button').on("click", startGame);
 });
 
+var correctGrid, 
+    selectedGrid,
+    playerOneScore,
+    playerTwoScore;
+
 function startGame() {
-  var playerOneScore = 0;
-  var playerTwoScore = 0;
-  var correctGrid = makeGrid();
-  var selectedGrid = [];
+  playerOneScore = 0;
+  playerTwoScore = 0;
+  correctGrid = makeGrid();
+  selectedGrid = [];
   console.log(correctGrid);
   setTimeout(selectColors, 5000); 
   setTimeout(updateScore, 36000);
@@ -19,14 +24,12 @@ function updateScore() {
 }
 
 function compareGrids(correctGrid, selectedGrid) {
-  console.log('workin');
-  for (var i = 0; i < 25; i++) {
-    if (correctGrid[i] === selectedGrid[i]) {
-      playerOneScore++;
-      $('#playerOneScore').text("score. " + playerOneScore);
-      console.log(playerOneScore);
-    }
+  var score = 0;
+  for(var i = 0; i <correctGrid.length; i++){
+    if (correctGrid[i] === selectedGrid[i]) score++
   }
+  console.log(score);
+  $('#playerOneScore').text("score. " + score);
 }
 
 function selectColors() {
