@@ -3,14 +3,31 @@ $(function setup(){
 });
 
 function startGame() {
+  var playerOneScore = 0;
+  var playerTwoScore = 0;
   var correctGrid = makeGrid();
-  var selectedGrid;
+  var selectedGrid = [];
   console.log(correctGrid);
   setTimeout(selectColors, 5000); 
-  setTimeout(storeSelections, 35100);
+  setTimeout(updateScore, 36000);
 }
 
 //FUNCTIONS FOR PLAYING THE GAME
+
+function updateScore() {
+  compareGrids(correctGrid, selectedGrid);
+}
+
+function compareGrids(correctGrid, selectedGrid) {
+  console.log('workin');
+  for (var i = 0; i < 25; i++) {
+    if (correctGrid[i] === selectedGrid[i]) {
+      playerOneScore++;
+      $('#playerOneScore').text("score. " + playerOneScore);
+      console.log(playerOneScore);
+    }
+  }
+}
 
 function selectColors() {
   removeColors();
@@ -22,7 +39,7 @@ function selectColors() {
 }
 
 function storeSelections() {
-  var selectedGrid = [];
+  selectedGrid = [];
   for (var i = 0; i < 25;i++) {
     selectedGrid.push($('li#' + [i]).css("background-color"));
   }
@@ -74,6 +91,8 @@ function colorTimer() {
     $('#color').removeClass(colors[5]);
     $('#color').fadeIn('fast').addClass('clear');
   }, 30000);
+
+  setTimeout(storeSelections, 30000);
 }
 
 //FUNCTIONS FOR GENERATING THE GRID
