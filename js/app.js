@@ -2,14 +2,14 @@ $(function setup(){
   $('button').on("click", startGame);
 });
 
-var turn       = 0;
-var turnNumber = 0;
+var turn           = 0;
+var turnNumber     = 0;
+var playerOneScore = 0;
+var playerTwoScore = 0;
 var correctGrid, 
     selectedGrid,
     player,
-    turnCounter,
-    playerOneScore,
-    playerTwoScore;
+    turnCounter;
 
 function startGame() {
   clearBoard();
@@ -44,15 +44,21 @@ function clearBoard() {
 function updateScore() {
   compareGrids(correctGrid, selectedGrid);
 }
+
 function compareGrids(correctGrid, selectedGrid) {
   var score = 0;
   for(var i = 0; i <correctGrid.length; i++){
     if (correctGrid[i] === selectedGrid[i]) score++
   }
   console.log(score);
-  $('#' + player).text("score. " + score);
-  $('#' + turnCounter).text("turns taken. " + turnNumber);
-
+  if (turn % 2 !== 0) {
+    playerOneScore = playerOneScore + score;
+    $('#' + player).text("score: " + playerOneScore);
+  } else {
+    playerTwoScore = playerTwoScore + score;
+    $('#' + player).text("score: " + playerTwoScore);
+  }
+  $('#' + turnCounter).text("turns taken: " + turnNumber);
 }
 
 function selectColors() {

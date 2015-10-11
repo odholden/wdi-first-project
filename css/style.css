@@ -63,7 +63,7 @@ ul {
   width: 500px;
   height: 500px;
   position: absolute;
-  left: 28%;
+  left: 350px;
 }
 
 #scores {
@@ -71,7 +71,7 @@ ul {
   width: 160px;
   height: 400px;
   position: absolute;
-  left: 13%;
+  left: 150px;
 }
 
 #scores div {
@@ -87,7 +87,7 @@ ul {
   height: 500px;
   border: 6px solid white;
   position: absolute;
-  right: 13%;
+  left: 900px;
 }
 
 li {
