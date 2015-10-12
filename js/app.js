@@ -26,7 +26,11 @@ function startGame() {
   //ELSE RETURN WINNER, REPLAY FUNCTION
 }
 
-//FUNCTIONS FOR PLAYING THE GAME
+function clearBoard() {
+  $('li').removeClass();
+}
+
+//PLAY THE GAME.
 
 function playRound() {
   correctGrid  = makeGrid();
@@ -37,100 +41,7 @@ function playRound() {
   setTimeout(clearBoard, 37000);
 }
 
-function clearBoard() {
-  $('li').removeClass();
-}
-
-function updateScore() {
-  compareGrids(correctGrid, selectedGrid);
-}
-
-function compareGrids(correctGrid, selectedGrid) {
-  var score = 0;
-  for(var i = 0; i <correctGrid.length; i++){
-    if (correctGrid[i] === selectedGrid[i]) score++
-  }
-  console.log(score);
-  if (turn % 1 != 0) {
-    playerOneScore = playerOneScore + score;
-    $('#' + player).text("score: " + playerOneScore);
-  } else {
-    playerTwoScore = playerTwoScore + score;
-    $('#' + player).text("score: " + playerTwoScore);
-  }
-  $('#' + turnCounter).text("turns taken: " + Math.ceil(turn));
-}
-
-function selectColors() {
-  removeColors();
-  colorTimer();
-  $('li').on("click", function() {
-    $(this).removeClass();
-    $(this).toggleClass($('#color').attr('class'));
-  });
-}
-
-function storeSelections() {
-  selectedGrid = [];
-  for (var i = 0; i < 25;i++) {
-    selectedGrid.push($('li#' + [i]).css("background-color"));
-  }
-  console.log(selectedGrid);
-  return selectedGrid;
-}
-
-function removeColors() {
-  var shadows = ['shadow1', 'shadow2', 'shadow3', 'shadow4', 'shadow5', 'shadow6']
-  shuffle(shadows);
-  console.log(shadows);
-  $('li.red').removeClass().addClass(shadows[0]);
-  $('li.green').removeClass().addClass(shadows[1]);
-  $('li.orange').removeClass().addClass(shadows[2]);
-  $('li.blue').removeClass().addClass(shadows[3]);
-  $('li.yellow').removeClass().addClass(shadows[4]);
-  $('li.purple').removeClass().addClass(shadows[5]);
-}
-
-function colorTimer() {
-  var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
-  $('#color').fadeIn('fast').addClass(colors[0]);
-  var currentColor = colors[0];  
-  // for (var i = 0; i<colors.length; i++) {
-  //   setTimeout(function() {
-  //     $('#color').removeClass(colors[i]);
-  //     $('#color').fadeIn('fast').addClass(colors[i+1]);
-  //   }, (i*5000));
-  // } 
-  setTimeout(function() {
-    $('#color').removeClass(colors[0]);
-    $('#color').fadeIn('fast').addClass(colors[1]);
-  }, 5000); 
-  setTimeout(function() {
-    $('#color').removeClass(colors[1]);
-    $('#color').fadeIn('fast').addClass(colors[2]);
-  }, 10000);
-  setTimeout(function() {
-    $('#color').removeClass(colors[2]);
-    $('#color').fadeIn('fast').addClass(colors[3]);
-  }, 15000);
-  setTimeout(function() {
-    $('#color').removeClass(colors[3]);
-    $('#color').fadeIn('fast').addClass(colors[4]);
-  }, 20000);
-  setTimeout(function() {
-    $('#color').removeClass(colors[4]);
-    $('#color').fadeIn('fast').addClass(colors[5]);
-  }, 25000);
-
-  setTimeout(function() {
-    $('#color').removeClass(colors[5]);
-    $('#color').fadeIn('fast').addClass('clear');
-  }, 30000);
-
-  setTimeout(storeSelections, 30000);
-}
-
-//FUNCTIONS FOR GENERATING THE GRID
+//MAKE THE GRID.
 
 function makeGrid() {
   var blocks      = makeBlocks();
@@ -154,10 +65,13 @@ function makeBlocks() {
   return blocks   = [block0, block1, block2, block3, block4, block5];
 }
 
-function getColors() {
-  var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
-  var shuffledColors = shuffle(colors);
-  return shuffledColors;
+function getBlockLimits() {
+  var startingBlocks = [];
+  for (var i = 1; i <= 23; i++) {startingBlocks.push(i)}
+  var shuffledBlocks = shuffle(startingBlocks);
+  var randomBlocks   = startingBlocks.splice(3, 5);
+  var blockLimits    = sortRandomBlocks(randomBlocks);
+  return blockLimits;
 }
 
 function shuffle(array) {
@@ -173,19 +87,11 @@ function shuffle(array) {
   return array;
 }
 
-function fillGrid(blocks, background) {
-  for (var i = 0; i < blocks.length; i++) {
-    $("li#"+blocks[i]).addClass(background);       
-  }
-}
-
-function getBlockLimits() {
-  var startingBlocks = [];
-  for (var i = 1; i <= 23; i++) {startingBlocks.push(i)}
-  var shuffledBlocks = shuffle(startingBlocks);
-  var randomBlocks   = startingBlocks.splice(3, 5);
-  var blockLimits    = sortRandomBlocks(randomBlocks);
-  return blockLimits;
+function sortRandomBlocks(randomBlocks) {
+  randomBlocks.sort(function(a,b) {
+    return a-b;
+  });
+  return randomBlocks;
 }
 
 function getBlock(lowerLimit, upperLimit) {
@@ -196,12 +102,123 @@ function getBlock(lowerLimit, upperLimit) {
   return block;
 }
 
-function sortRandomBlocks(randomBlocks) {
-  randomBlocks.sort(function(a,b) {
-    return a-b;
-  });
-  return randomBlocks;
+function getColors() {
+  var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
+  var shuffledColors = shuffle(colors);
+  return shuffledColors;
 }
+
+//PLAYER SELECTS THE COLORS.
+
+function selectColors() {
+  removeColors();
+  colorTimer();
+  $('li').on("click", function() {
+    $(this).removeClass();
+    $(this).toggleClass($('#color').attr('class'));
+  });
+}
+
+function removeColors() {
+  var shadows = ['shadow1', 'shadow2', 'shadow3', 'shadow4', 'shadow5', 'shadow6']
+  shuffle(shadows);
+  console.log(shadows);
+  $('li.red').removeClass().addClass(shadows[0]);
+  $('li.green').removeClass().addClass(shadows[1]);
+  $('li.orange').removeClass().addClass(shadows[2]);
+  $('li.blue').removeClass().addClass(shadows[3]);
+  $('li.yellow').removeClass().addClass(shadows[4]);
+  $('li.purple').removeClass().addClass(shadows[5]);
+}
+
+function colorTimer() {
+  var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
+  $('#color').fadeIn('fast').addClass(colors[0]);
+  var currentColor = colors[0];  
+  setTimeout(function() {
+    $('#color').removeClass(colors[0]);
+    $('#color').fadeIn('fast').addClass(colors[1]);
+  }, 5000); 
+  setTimeout(function() {
+    $('#color').removeClass(colors[1]);
+    $('#color').fadeIn('fast').addClass(colors[2]);
+  }, 10000);
+  setTimeout(function() {
+    $('#color').removeClass(colors[2]);
+    $('#color').fadeIn('fast').addClass(colors[3]);
+  }, 15000);
+  setTimeout(function() {
+    $('#color').removeClass(colors[3]);
+    $('#color').fadeIn('fast').addClass(colors[4]);
+  }, 20000);
+  setTimeout(function() {
+    $('#color').removeClass(colors[4]);
+    $('#color').fadeIn('fast').addClass(colors[5]);
+  }, 25000);
+  setTimeout(function() {
+    $('#color').removeClass(colors[5]);
+    $('#color').fadeIn('fast').addClass('clear');
+  }, 30000);
+  setTimeout(storeSelections, 30000);
+}
+
+function storeSelections() {
+  selectedGrid = [];
+  for (var i = 0; i < 25;i++) {
+    selectedGrid.push($('li#' + [i]).css("background-color"));
+  }
+  console.log(selectedGrid);
+  return selectedGrid;
+}
+
+//UPDATE THE SCORE.
+
+
+function updateScore() {
+  compareGrids(correctGrid, selectedGrid);
+}
+
+function compareGrids(correctGrid, selectedGrid) {
+  var score = 0;
+  for(var i = 0; i <correctGrid.length; i++){
+    if (correctGrid[i] === selectedGrid[i]) score++
+  }
+  console.log(score);
+  if (turn % 1 != 0) {
+    playerOneScore = playerOneScore + score;
+    $('#' + player).text("score: " + playerOneScore);
+  } else {
+    playerTwoScore = playerTwoScore + score;
+    $('#' + player).text("score: " + playerTwoScore);
+  }
+  $('#' + turnCounter).text("turns taken: " + Math.ceil(turn));
+}
+
+
+
+
+
+
+
+
+
+//FUNCTIONS FOR GENERATING THE GRID
+
+
+
+
+
+
+
+function fillGrid(blocks, background) {
+  for (var i = 0; i < blocks.length; i++) {
+    $("li#"+blocks[i]).addClass(background);       
+  }
+}
+
+
+
+
 
 
 
