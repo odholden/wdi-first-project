@@ -22,7 +22,11 @@ function startGame() {
     player        = 'playerTwoScore';
     turnCounter   = 'playerTwoTurn';
   };
-  if (turn <= 3) playRound();
+  if (turn <= 3) {
+    playRound();
+  } else {
+    winnerMessage
+  }
   //ELSE RETURN WINNER, REPLAY FUNCTION
 }
 
@@ -30,7 +34,7 @@ function clearBoard() {
   $('li').removeClass();
 }
 
-//PLAY THE GAME.
+//1. PLAY THE GAME.
 
 function playRound() {
   correctGrid  = makeGrid();
@@ -41,7 +45,7 @@ function playRound() {
   setTimeout(clearBoard, 37000);
 }
 
-//MAKE THE GRID.
+//1.1 MAKE THE GRID.
 
 function makeGrid() {
   var blocks      = makeBlocks();
@@ -108,7 +112,13 @@ function getColors() {
   return shuffledColors;
 }
 
-//PLAYER SELECTS THE COLORS.
+function fillGrid(blocks, background) {
+  for (var i = 0; i < blocks.length; i++) {
+    $("li#"+blocks[i]).addClass(background);       
+  }
+}
+
+//1.2 PLAYER SELECTS THE COLORS.
 
 function selectColors() {
   removeColors();
@@ -171,7 +181,7 @@ function storeSelections() {
   return selectedGrid;
 }
 
-//UPDATE THE SCORE.
+//1.3 UPDATE THE SCORE.
 
 
 function updateScore() {
@@ -194,27 +204,24 @@ function compareGrids(correctGrid, selectedGrid) {
   $('#' + turnCounter).text("turns taken: " + Math.ceil(turn));
 }
 
+//2. DECLARE WINNER 
+
+
+//TO DO
+
+// DO WINNER DECLARATIONS
+// ADD A RESET FUNCTION
+// INCLUDE INTRODUCTION PAGE
+
+//MAKE INTO OBJECTS
+
+//MULTIPLE BOARD SIZES 
+//CHANGE NUMBER OF COLORS
 
 
 
 
 
-
-
-
-//FUNCTIONS FOR GENERATING THE GRID
-
-
-
-
-
-
-
-function fillGrid(blocks, background) {
-  for (var i = 0; i < blocks.length; i++) {
-    $("li#"+blocks[i]).addClass(background);       
-  }
-}
 
 
 
