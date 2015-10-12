@@ -1,10 +1,5 @@
-$(function setup(){
-  $('#start').on("click", startGame);
-  $('#infoText').text("player one goes first, click play to begin.")
-});
-
 var turn           = 0;
-var turnNumber     = 3;
+var turnNumber     = 1;
 var playerOneScore = 0;
 var playerTwoScore = 0;
 var correctGrid, 
@@ -12,6 +7,20 @@ var correctGrid,
     player,
     turnCounter,
     winner;
+
+$(function overlay(){
+
+  $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking blickers.</p><div id='letsblick'>let's blick.</div>");
+  $('#letsblick').on("click", setup);
+});
+
+function setup() {
+  $('#overlay0').remove();
+  $('#overlay1').remove();
+  $('#overlay2').remove();
+  $('#infoText').text("player one goes first, click play to begin.");
+  $('#start').on("click", startGame);
+}
 
 function startGame() {
   clearBoard();
@@ -27,7 +36,6 @@ function startGame() {
   if (turn <= turnNumber) {
     playRound();
   };
-  //ELSE RETURN WINNER, REPLAY FUNCTION
 }
 
 function clearBoard() {
@@ -227,23 +235,40 @@ function winnerMessage() {
   if (playerOneScore > playerTwoScore) {
     winner = 'player one';
     $('#infoText').text(winner + ' wins, click play to start again.');
+    
   } else if (playerTwoScore > playerOneScore) {
     winner = 'player two';
     $('#infoText').text(winner + ' wins, click play to start again.');
   } else if (playerOneScore === playerTwoScore) {
     winner = 'tie';
     $('#infoText').text("its a draw, click play to start again.");
-
   }
+  resetGame();
+}
+
+function resetGame() {
+  playerOneScore = 0;
+  playerTwoScore = 0;
+  $('#color').fadeIn('fast').addClass('clear');
+  $('#playerOneScore').text('score: 0');
+  $('#playerTwoScore').text('score: 0');
+
+  turn = 0;
+  correctGrid, selectedGrid, player, turnCounter, winner;
+  clearBoard();
+
+
+
 }
 
 
 //TO DO
 
 // ADD A RESET FUNCTION
-// INCLUDE INTRODUCTION PAGE
 
 //MAKE INTO OBJECTS
+
+//MAKE MOBILE
 
 //MULTIPLE BOARD SIZES 
 //CHANGE NUMBER OF COLORS
