@@ -14,16 +14,16 @@ var correctGrid,
 function startGame() {
   clearBoard();
   $('#color').removeClass();
-  turn++;
-  if (turn % 2 !== 0) {
+  turn+= 0.5;
+  if (turn % 1 != 0) {
     player        = 'playerOneScore';
     turnCounter   = 'playerOneTurn';
-    turnNumber++;
   } else {
     player        = 'playerTwoScore';
     turnCounter   = 'playerTwoTurn';
   };
-  playRound();
+  if (turn <= 3) playRound();
+  //ELSE RETURN WINNER, REPLAY FUNCTION
 }
 
 //FUNCTIONS FOR PLAYING THE GAME
@@ -51,14 +51,14 @@ function compareGrids(correctGrid, selectedGrid) {
     if (correctGrid[i] === selectedGrid[i]) score++
   }
   console.log(score);
-  if (turn % 2 !== 0) {
+  if (turn % 1 != 0) {
     playerOneScore = playerOneScore + score;
     $('#' + player).text("score: " + playerOneScore);
   } else {
     playerTwoScore = playerTwoScore + score;
     $('#' + player).text("score: " + playerTwoScore);
   }
-  $('#' + turnCounter).text("turns taken: " + turnNumber);
+  $('#' + turnCounter).text("turns taken: " + Math.ceil(turn));
 }
 
 function selectColors() {
@@ -80,12 +80,15 @@ function storeSelections() {
 }
 
 function removeColors() {
-  $('li.red').removeClass().addClass('shadow1');
-  $('li.green').removeClass().addClass('shadow2');
-  $('li.orange').removeClass().addClass('shadow3');
-  $('li.blue').removeClass().addClass('shadow4');
-  $('li.yellow').removeClass().addClass('shadow5');
-  $('li.purple').removeClass().addClass('shadow6');
+  var shadows = ['shadow1', 'shadow2', 'shadow3', 'shadow4', 'shadow5', 'shadow6']
+  shuffle(shadows);
+  console.log(shadows);
+  $('li.red').removeClass().addClass(shadows[0]);
+  $('li.green').removeClass().addClass(shadows[1]);
+  $('li.orange').removeClass().addClass(shadows[2]);
+  $('li.blue').removeClass().addClass(shadows[3]);
+  $('li.yellow').removeClass().addClass(shadows[4]);
+  $('li.purple').removeClass().addClass(shadows[5]);
 }
 
 function colorTimer() {
