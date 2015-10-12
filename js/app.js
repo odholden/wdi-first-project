@@ -1,7 +1,9 @@
 var turn           = 0;
-var turnNumber     = 1;
+var turnNumber     = 3;
 var playerOneScore = 0;
 var playerTwoScore = 0;
+var playerOneWins  = 0;
+var playerTwoWins  = 0;
 var correctGrid, 
     selectedGrid,
     player,
@@ -234,11 +236,15 @@ function scoreMessage() {
 function winnerMessage() {
   if (playerOneScore > playerTwoScore) {
     winner = 'player one';
+    playerOneWins++;
     $('#infoText').text(winner + ' wins, click play to start again.');
-    
+    $('#playerOneWins').text('player one:' + playerOneWins);
+
   } else if (playerTwoScore > playerOneScore) {
     winner = 'player two';
+    playerTwoWins++;
     $('#infoText').text(winner + ' wins, click play to start again.');
+    $('#playerOneWins').text('player one:' + playerTwoWins);
   } else if (playerOneScore === playerTwoScore) {
     winner = 'tie';
     $('#infoText').text("its a draw, click play to start again.");
