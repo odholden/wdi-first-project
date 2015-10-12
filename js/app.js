@@ -4,13 +4,14 @@ $(function setup(){
 });
 
 var turn           = 0;
-var turnNumber     = 1;
+var turnNumber     = 3;
 var playerOneScore = 0;
 var playerTwoScore = 0;
 var correctGrid, 
     selectedGrid,
     player,
-    turnCounter;
+    turnCounter,
+    winner;
 
 function startGame() {
   clearBoard();
@@ -25,9 +26,7 @@ function startGame() {
   };
   if (turn <= turnNumber) {
     playRound();
-  } else {
-    winnerMessage(playerOneScore, playerTwoScore);
-  }
+  };
   //ELSE RETURN WINNER, REPLAY FUNCTION
 }
 
@@ -38,12 +37,13 @@ function clearBoard() {
 //1. PLAY THE GAME.
 
 function playRound() {
+  $('#infoText').text("remember the colours.")
   correctGrid  = makeGrid();
   selectedGrid = [];
   console.log(correctGrid);
   setTimeout(selectColors, 5000); 
-  setTimeout(updateScore, 36000);
-  setTimeout(clearBoard, 39000);
+  setTimeout(updateScore, 37000);
+  setTimeout(scoreMessage, 39000);
 }
 
 //1.1 MAKE THE GRID.
@@ -145,6 +145,8 @@ function removeColors() {
 function colorTimer() {
   var colors = ['red', 'green', 'orange', 'blue', 'yellow', 'purple'];
   $('#color').fadeIn('fast').addClass(colors[0]);
+  $('#infoText').text("select your squares.");
+
   var currentColor = colors[0];  
   setTimeout(function() {
     $('#color').removeClass(colors[0]);
@@ -169,6 +171,8 @@ function colorTimer() {
   setTimeout(function() {
     $('#color').removeClass(colors[5]);
     $('#color').fadeIn('fast').addClass('clear');
+    $('#infoText').text("times up.");
+
   }, 30000);
   setTimeout(storeSelections, 30000);
 }
@@ -203,20 +207,40 @@ function compareGrids(correctGrid, selectedGrid) {
     $('#' + player).text("score: " + playerTwoScore);
   }
   $('#' + turnCounter).text("turns taken: " + Math.ceil(turn));
+  $('#infoText').text("you scored " + score + ".");
 }
 
 //2. DECLARE WINNER 
 
-function winnerMessage() {
+function scoreMessage() {
+  $('li').removeClass();
+  if (turn === turnNumber) {
+    winnerMessage();
+  } else if (turn % 1 != 0) {
+    $('#infoText').text("time for player two. click play to begin");
+  } else {
+    $('#infoText').text("time for player one. click play to begin");
+  }
+}
 
+function winnerMessage() {
+  if (playerOneScore > playerTwoScore) {
+    winner = 'player one';
+    $('#infoText').text(winner + ' wins. click play to start again.');
+  } else if (playerTwoScore > playerOneScore) {
+    winner = 'player two';
+    $('#infoText').text(winner + ' wins. click play to start again.');
+  } else if (playerOneScore === playerTwoScore) {
+    winner = 'tie';
+    $('#infoText').text("its a draw. click play to start again.");
+
+  }
 }
 
 
 //TO DO
 
-// DO WINNER DECLARATIONS
 // ADD A RESET FUNCTION
-// ADD SCORE ALERTS
 // INCLUDE INTRODUCTION PAGE
 
 //MAKE INTO OBJECTS
