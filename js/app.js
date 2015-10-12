@@ -12,15 +12,29 @@ var correctGrid,
 
 $(function overlay(){
 
-  $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking blickers.</p><div id='letsblick'>let's blick.</div>");
-  $('#letsblick').on("click", setup);
+  // if (screen.width > 960){
+  //   $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
+  // } else if (screen.width <= 960){
+  //   $('#overlay1').html("<h2>welcome to blick.</h2><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
+  // }
+
+
+  $(window).resize(function() {
+    if (document.documentElement.clientWidth >= 960) {    
+      $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</pp>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to thcorrect squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><each color will be shown in the red box.</p><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
+    } else if (document.documentElement.clientWidth < 960){
+      $('#overlay1').html("<h2>welcome to blick.</h2><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
+    }   
+  }).resize();
+
+  $('#letsblick').on("click", setup);  
 });
 
 function setup() {
   $('#overlay0').remove();
   $('#overlay1').remove();
   $('#overlay2').remove();
-  $('#infoText').text("player one goes first, click play to begin.");
+  $('#infoText').text("player one goes first, click 'new game' to begin.");
   $('#start').on("click", startGame);
 }
 
@@ -50,7 +64,6 @@ function playRound() {
   $('#infoText').text("remember the colours.")
   correctGrid  = makeGrid();
   selectedGrid = [];
-  console.log(correctGrid);
   setTimeout(selectColors, 5000); 
   setTimeout(updateScore, 37000);
   setTimeout(scoreMessage, 39000);
@@ -143,7 +156,6 @@ function selectColors() {
 function removeColors() {
   var shadows = ['shadow1', 'shadow2', 'shadow3', 'shadow4', 'shadow5', 'shadow6']
   shuffle(shadows);
-  console.log(shadows);
   $('li.red').removeClass().addClass(shadows[0]);
   $('li.green').removeClass().addClass(shadows[1]);
   $('li.orange').removeClass().addClass(shadows[2]);
@@ -192,7 +204,6 @@ function storeSelections() {
   for (var i = 0; i < 25;i++) {
     selectedGrid.push($('li#' + [i]).css("background-color"));
   }
-  console.log(selectedGrid);
   return selectedGrid;
 }
 
@@ -227,9 +238,9 @@ function scoreMessage() {
   if (turn === turnNumber) {
     winnerMessage();
   } else if (turn % 1 != 0) {
-    $('#infoText').text("time for player two, click play to begin");
+    $('#infoText').text("time for player two, click 'new game' to begin");
   } else {
-    $('#infoText').text("time for player one, click play to begin");
+    $('#infoText').text("time for player one, click 'new game' to begin");
   }
 }
 
@@ -270,8 +281,6 @@ function resetGame() {
 
 //TO DO
 
-// ADD A RESET FUNCTION
-
 //MAKE INTO OBJECTS
 
 //MAKE MOBILE
@@ -279,7 +288,7 @@ function resetGame() {
 //MULTIPLE BOARD SIZES 
 //CHANGE NUMBER OF COLORS
 
-
+// ip address: 62.254.81.74
 
 
 
