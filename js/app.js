@@ -14,13 +14,26 @@ $(function overlay(){
 
   $(window).resize(function() {
     if (document.documentElement.clientWidth >= 960) {    
-      $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
+      $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
+      $('#overlay1').css("padding", "0 15px");
+      $('p').css("font-size", "16px");
+
     } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 640){
-      $('#overlay1').html("<h2>welcome to blick.</h2><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
+      $('#overlay1').html("<h2>welcome to blick.</h2><div id='letsblick'>let's blick.</div>");
+      $('#playerOneTurn').remove();
+      $('#playerTwoTurn').remove();
     } else if (document.documentElement.clientWidth <= 640){
+      $('#overlay1').html("<h2>BLICK.</h2><div id='letsblick'>let's blick.</div>");
+      $('#overlay1').css("width", "51.5vw").css("height", "51.5vw").css("left", "24.5%").css("top","30px");
       $('#overlay0').remove();
-      $('#overlay1').remove();
       $('#overlay2').remove();
+
+      $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "70px").css("border", "2px solid #78909C");
+      $('#playerOneTurn').remove();
+      $('#playerTwoTurn').remove();
+      $('#totalScores').remove();
+      
+
     }  }).resize();
 
   $('#letsblick').on("click", setup);  
@@ -30,7 +43,7 @@ function setup() {
   $('#overlay0').remove();
   $('#overlay1').remove();
   $('#overlay2').remove();
-  $('#infoText').text("player one goes first, click 'new game' to begin.");
+  $('#infoText').text("player one goes first, press start to begin.");
   $('#start').on("click", startGame);
 }
 
@@ -234,9 +247,9 @@ function scoreMessage() {
   if (turn === turnNumber) {
     winnerMessage();
   } else if (turn % 1 != 0) {
-    $('#infoText').text("time for player two, click 'new game' to begin");
+    $('#infoText').text("time for player two, press start to begin");
   } else {
-    $('#infoText').text("time for player one, click 'new game' to begin");
+    $('#infoText').text("time for player one, press start to begin");
   }
 }
 
@@ -244,17 +257,17 @@ function winnerMessage() {
   if (playerOneScore > playerTwoScore) {
     winner = 'player one';
     playerOneWins++;
-    $('#infoText').text(winner + ' wins, click play to start again.');
+    $('#infoText').text(winner + ' wins, press start to start again.');
     $('#playerOneWins').text('player one:' + playerOneWins);
 
   } else if (playerTwoScore > playerOneScore) {
     winner = 'player two';
     playerTwoWins++;
-    $('#infoText').text(winner + ' wins, click play to start again.');
+    $('#infoText').text(winner + ' wins, press start to start again.');
     $('#playerOneWins').text('player one:' + playerTwoWins);
   } else if (playerOneScore === playerTwoScore) {
     winner = 'tie';
-    $('#infoText').text("its a draw, click play to start again.");
+    $('#infoText').text("its a draw, press start to start again.");
   }
   resetGame();
 }
