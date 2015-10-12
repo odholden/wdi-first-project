@@ -1,9 +1,10 @@
 $(function setup(){
   $('button').on("click", startGame);
+  $('#infoText').text("player one goes first. click play to begin.")
 });
 
 var turn           = 0;
-var turnNumber     = 0;
+var turnNumber     = 1;
 var playerOneScore = 0;
 var playerTwoScore = 0;
 var correctGrid, 
@@ -22,10 +23,10 @@ function startGame() {
     player        = 'playerTwoScore';
     turnCounter   = 'playerTwoTurn';
   };
-  if (turn <= 3) {
+  if (turn <= turnNumber) {
     playRound();
   } else {
-    winnerMessage
+    winnerMessage(playerOneScore, playerTwoScore);
   }
   //ELSE RETURN WINNER, REPLAY FUNCTION
 }
@@ -42,7 +43,7 @@ function playRound() {
   console.log(correctGrid);
   setTimeout(selectColors, 5000); 
   setTimeout(updateScore, 36000);
-  setTimeout(clearBoard, 37000);
+  setTimeout(clearBoard, 39000);
 }
 
 //1.1 MAKE THE GRID.
@@ -206,11 +207,16 @@ function compareGrids(correctGrid, selectedGrid) {
 
 //2. DECLARE WINNER 
 
+function winnerMessage() {
+
+}
+
 
 //TO DO
 
 // DO WINNER DECLARATIONS
 // ADD A RESET FUNCTION
+// ADD SCORE ALERTS
 // INCLUDE INTRODUCTION PAGE
 
 //MAKE INTO OBJECTS
