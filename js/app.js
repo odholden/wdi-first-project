@@ -1,6 +1,6 @@
 $(function setup(){
-  $('button').on("click", startGame);
-  $('#infoText').text("player one goes first. click play to begin.")
+  $('#start').on("click", startGame);
+  $('#infoText').text("player one goes first, click play to begin.")
 });
 
 var turn           = 0;
@@ -217,22 +217,22 @@ function scoreMessage() {
   if (turn === turnNumber) {
     winnerMessage();
   } else if (turn % 1 != 0) {
-    $('#infoText').text("time for player two. click play to begin");
+    $('#infoText').text("time for player two, click play to begin");
   } else {
-    $('#infoText').text("time for player one. click play to begin");
+    $('#infoText').text("time for player one, click play to begin");
   }
 }
 
 function winnerMessage() {
   if (playerOneScore > playerTwoScore) {
     winner = 'player one';
-    $('#infoText').text(winner + ' wins. click play to start again.');
+    $('#infoText').text(winner + ' wins, click play to start again.');
   } else if (playerTwoScore > playerOneScore) {
     winner = 'player two';
-    $('#infoText').text(winner + ' wins. click play to start again.');
+    $('#infoText').text(winner + ' wins, click play to start again.');
   } else if (playerOneScore === playerTwoScore) {
     winner = 'tie';
-    $('#infoText').text("its a draw. click play to start again.");
+    $('#infoText').text("its a draw, click play to start again.");
 
   }
 }
