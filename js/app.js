@@ -12,20 +12,16 @@ var correctGrid,
 
 $(function overlay(){
 
-  // if (screen.width > 960){
-  //   $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
-  // } else if (screen.width <= 960){
-  //   $('#overlay1').html("<h2>welcome to blick.</h2><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
-  // }
-
-
   $(window).resize(function() {
     if (document.documentElement.clientWidth >= 960) {    
-      $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</pp>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to thcorrect squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><each color will be shown in the red box.</p><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
-    } else if (document.documentElement.clientWidth < 960){
+      $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
+    } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 640){
       $('#overlay1').html("<h2>welcome to blick.</h2><p>happy blicking you blicking blickers.</p><div id='letsblick'>let's blick.</div>");
-    }   
-  }).resize();
+    } else if (document.documentElement.clientWidth <= 640){
+      $('#overlay0').remove();
+      $('#overlay1').remove();
+      $('#overlay2').remove();
+    }  }).resize();
 
   $('#letsblick').on("click", setup);  
 });
