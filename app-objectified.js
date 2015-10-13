@@ -4,51 +4,69 @@ var playerOneScore = 0;
 var playerTwoScore = 0;
 var playerOneWins  = 0;
 var playerTwoWins  = 0;
+var gridSize       = 25;
 var correctGrid, 
     selectedGrid,
     player,
     turnCounter,
     winner;
 
-$(function overlay(){
+$(function responsiveOverlay(){
 
-  $(window).resize(function() {
-    if (document.documentElement.clientWidth >= 960) {    
-      $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
+  if (document.documentElement.clientWidth >= 960) {    
+    $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>each player has three turns.</p><p>choose the biggest grid you dare.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
       $('#overlay1').css("padding", "0 15px");
-      $('p').css("font-size", "16px");
+      $('p').css("font-size", "14px");
 
-    } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 840){
-      $('#overlay1').html("<h2>welcome to blick.</h2><div id='letsblick'>let's blick.</div>");
-      $('#playerOneTurn').remove();
-      $('#playerTwoTurn').remove();
-    } else if (document.documentElement.clientWidth <= 840){
-      $('#overlay1').html("<h2>BLICK.</h2><div id='letsblick'>let's blick.</div>");
-      $('#overlay1').css("width", "51.5vw").css("height", "51.5vw").css("left", "24.5%").css("top","30px");
-      $('#overlay0').remove();
-      $('#overlay2').remove();
-
-      $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "70px").css("border", "2px solid #78909C");
-      $('#playerOneTurn').remove();
-      $('#playerTwoTurn').remove();
-      $('#totalScores').remove();
-      
-
-    }  }).resize();
-
+  } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 840){
+    $('#overlay1').html("<h2>welcome to blick.</h2><div id='letsblick'>let's blick.</div>");
+    $('#playerOneTurn').remove();
+    $('#playerTwoTurn').remove();
+  } else if (document.documentElement.clientWidth <= 840){
+    $('#overlay1').html("<h2>BLICK.</h2><div id='letsblick'>let's blick.</div>");
+    $('#overlay1').css("width", "51.5vw").css("height", "51.5vw").css("left", "24.5%").css("top","15px");
+    $('#overlay0').remove();
+    $('#overlay2').remove();
+    $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "60px").css("border", "2px solid #78909C").css("height", "60px");
+    $('#playerOneTurn').remove();
+    $('#playerTwoTurn').remove();
+    $('#totalScores').remove();
+    };
   $('#letsblick').on("click", setup);  
 });
 
 function setup() {
-  $('#overlay0').remove();
-  $('#overlay1').remove();
-  $('#overlay2').remove();
+  $('#overlay0').fadeOut("slow");
+  $('#overlay1').fadeOut("slow");
+  $('#overlay2').fadeOut("slow");
   $('#infoText').text("player one goes first, press start to begin.");
+  $('#small').on("click", makeGridSmall);
+  $('#medium').on("click", makeGridMedium);
+  $('#large').on("click", makeGridLarge);
   $('#start').on("click", startGame);
+}
+
+function makeGridSmall() {
+  gridSize = 16;
+  $('ul').html('<li id="0"></li><li id="15"></li><li id="14"></li><li id="13"></li><li id="1"></li><li id="2"></li><li id="11"></li><li id="12"></li><li id="4"></li><li id="3"></li><li id="10"></li><li id="9"></li><li id="5"></li><li id="6"></li><li id="7"></li><li id="8"></li>');
+  $('li').css("width", "25%").css("height", "25%");
+}
+
+function makeGridMedium() {
+  gridSize = 25;
+  $('ul').html('<li id="0"></li><li id="1"></li><li id="18"></li><li id="17"></li><li id="16"></li><li id="3"></li><li id="2"></li><li id="19"></li><li id="20"></li><li id="15"></li><li id="4"></li><li id="23"></li><li id="22"></li><li id="21"></li><li id="14"></li><li id="5"></li><li id="24"></li><li id="9"></li><li id="10"></li><li id="13"></li><li id="6"></li><li id="7"></li><li id="8"></li><li id="11"></li><li id="12"></li>');
+  $('li').css("width", "20%").css("height", "20%");
+}
+
+function makeGridLarge() {
+  gridSize = 36;
+  $('ul').html('<li id="16"></li><li id="15"></li><li id="14"></li><li id="13"></li><li id="10"></li><li id="9"></li><li id="17"></li><li id="18"></li><li id="19"></li><li id="12"></li><li id="11"></li><li id="8"></li><li id="22"></li><li id="21"></li><li id="20"></li><li id="35"></li><li id="34"></li><li id="7"></li><li id="23"></li><li id="30"></li><li id="31"></li><li id="32"></li><li id="33"></li><li id="6"></li><li id="24"></li><li id="29"></li><li id="28"></li><li id="3"></li><li id="4"></li><li id="5"></li><li id="25"></li><li id="26"></li><li id="27"></li><li id="2"></li><li id="1"></li><li id="0"></li>');
+  $('li').css("width", "16.666666667%").css("height", "16.666666667%");
 }
 
 function startGame() {
   clearBoard();
+  $('li').css("background-color","none");
   $('#color').removeClass();
   turn+= 0.5;
   if (turn % 1 != 0) {
@@ -83,12 +101,17 @@ function playRound() {
 function makeGrid() {
   var blocks      = makeBlocks();
   var colors      = getColors();
-  for (var i = 0; i < 6; i++) fillGrid(blocks[i], colors[i]);
-  var correctGrid = [];
-  for (var i = 0; i < 25;i++) {
+  for (var i = 0; i < colors.length; i++) fillGrid(blocks[i], colors[i]);
+  correctGrid = [];
+  setTimeout(storeCorrect, 700); 
+  console.log(correctGrid);
+  return correctGrid;
+}
+
+function storeCorrect() {
+  for (var i = 0; i < gridSize;i++) {
     correctGrid.push($('li#' + [i]).css("background-color"));
   }
-  return correctGrid;
 }
 
 function makeBlocks() {
@@ -98,13 +121,13 @@ function makeBlocks() {
   var block2      = getBlock(blockLimits[1], blockLimits[2]);
   var block3      = getBlock(blockLimits[2], blockLimits[3]);
   var block4      = getBlock(blockLimits[3], blockLimits[4]);
-  var block5      = getBlock(blockLimits[4], 24);
+  var block5      = getBlock(blockLimits[4], gridSize-1);
   return blocks   = [block0, block1, block2, block3, block4, block5];
 }
 
 function getBlockLimits() {
   var startingBlocks = [];
-  for (var i = 1; i <= 23; i++) {startingBlocks.push(i)}
+  for (var i = 1; i <= gridSize-2; i++) {startingBlocks.push(i)}
   var shuffledBlocks = shuffle(startingBlocks);
   var randomBlocks   = startingBlocks.splice(3, 5);
   var blockLimits    = sortRandomBlocks(randomBlocks);
@@ -210,9 +233,10 @@ function colorTimer() {
 
 function storeSelections() {
   selectedGrid = [];
-  for (var i = 0; i < 25;i++) {
+  for (var i = 0; i < gridSize;i++) {
     selectedGrid.push($('li#' + [i]).css("background-color"));
   }
+  console.log(selectedGrid);
   return selectedGrid;
 }
 
@@ -257,17 +281,17 @@ function winnerMessage() {
   if (playerOneScore > playerTwoScore) {
     winner = 'player one';
     playerOneWins++;
-    $('#infoText').text(winner + ' wins, press start to start again.');
+    $('#infoText').text(winner + ' wins, press start to replay.');
     $('#playerOneWins').text('player one:' + playerOneWins);
 
   } else if (playerTwoScore > playerOneScore) {
     winner = 'player two';
     playerTwoWins++;
-    $('#infoText').text(winner + ' wins, press start to start again.');
+    $('#infoText').text(winner + ' wins, press start to replay.');
     $('#playerOneWins').text('player one:' + playerTwoWins);
   } else if (playerOneScore === playerTwoScore) {
     winner = 'tie';
-    $('#infoText').text("its a draw, press start to start again.");
+    $('#infoText').text("its a draw, press start to replay.");
   }
   resetGame();
 }
