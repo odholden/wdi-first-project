@@ -11,7 +11,7 @@ var correctGrid,
     turnCounter,
     winner;
 
-$(function overlay(){
+$(function responsiveOverlay(){
 
   $(window).resize(function() {
     if (document.documentElement.clientWidth >= 960) {    
@@ -300,24 +300,7 @@ function resetGame() {
   turn = 0;
   correctGrid, selectedGrid, player, turnCounter, winner;
   clearBoard();
-
-
-
 }
-
-
-//TO DO
-
-//MAKE INTO OBJECTS
-
-//MAKE MOBILE
-
-//MULTIPLE BOARD SIZES 
-//CHANGE NUMBER OF COLORS
-
-// ip address: 62.254.81.74
-
-
 
 
 
