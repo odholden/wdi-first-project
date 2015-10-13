@@ -4,7 +4,6 @@ var playerOneScore = 0;
 var playerTwoScore = 0;
 var playerOneWins  = 0;
 var playerTwoWins  = 0;
-var gridSize       = 25;
 var correctGrid, 
     selectedGrid,
     player,
@@ -15,7 +14,7 @@ $(function overlay(){
 
   $(window).resize(function() {
     if (document.documentElement.clientWidth >= 960) {    
-      $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>each player has three turns.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
+      $('#overlay1').html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
       $('#overlay1').css("padding", "0 15px");
       $('p').css("font-size", "16px");
 
@@ -41,9 +40,9 @@ $(function overlay(){
 });
 
 function setup() {
-  $('#overlay0').fadeOut("slow");
-  $('#overlay1').fadeOut("slow");
-  $('#overlay2').fadeOut("slow");
+  $('#overlay0').remove();
+  $('#overlay1').remove();
+  $('#overlay2').remove();
   $('#infoText').text("player one goes first, press start to begin.");
   $('#start').on("click", startGame);
 }
@@ -84,9 +83,9 @@ function playRound() {
 function makeGrid() {
   var blocks      = makeBlocks();
   var colors      = getColors();
-  for (var i = 0; i < colors.length; i++) fillGrid(blocks[i], colors[i]);
+  for (var i = 0; i < 6; i++) fillGrid(blocks[i], colors[i]);
   var correctGrid = [];
-  for (var i = 0; i < gridSize;i++) {
+  for (var i = 0; i < 25;i++) {
     correctGrid.push($('li#' + [i]).css("background-color"));
   }
   return correctGrid;
@@ -99,13 +98,13 @@ function makeBlocks() {
   var block2      = getBlock(blockLimits[1], blockLimits[2]);
   var block3      = getBlock(blockLimits[2], blockLimits[3]);
   var block4      = getBlock(blockLimits[3], blockLimits[4]);
-  var block5      = getBlock(blockLimits[4], gridSize-1);
+  var block5      = getBlock(blockLimits[4], 24);
   return blocks   = [block0, block1, block2, block3, block4, block5];
 }
 
 function getBlockLimits() {
   var startingBlocks = [];
-  for (var i = 1; i <= gridSize-2; i++) {startingBlocks.push(i)}
+  for (var i = 1; i <= 23; i++) {startingBlocks.push(i)}
   var shuffledBlocks = shuffle(startingBlocks);
   var randomBlocks   = startingBlocks.splice(3, 5);
   var blockLimits    = sortRandomBlocks(randomBlocks);
@@ -211,7 +210,7 @@ function colorTimer() {
 
 function storeSelections() {
   selectedGrid = [];
-  for (var i = 0; i < gridSize;i++) {
+  for (var i = 0; i < 25;i++) {
     selectedGrid.push($('li#' + [i]).css("background-color"));
   }
   return selectedGrid;
@@ -283,37 +282,4 @@ function resetGame() {
   turn = 0;
   correctGrid, selectedGrid, player, turnCounter, winner;
   clearBoard();
-
-
-
 }
-
-
-//TO DO
-
-//MAKE INTO OBJECTS
-
-//MAKE MOBILE
-
-//MULTIPLE BOARD SIZES 
-//CHANGE NUMBER OF COLORS
-
-// ip address: 62.254.81.74
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
