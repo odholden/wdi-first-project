@@ -15,8 +15,8 @@ function Blick() {
   this.player,
   this.turnCounter,
   this.winner;
+  this.responsiveOverlay();
 }
-
 
 Blick.prototype.responsiveOverlay = function(){
   if (document.documentElement.clientWidth >= 960) {    
@@ -92,7 +92,7 @@ Blick.prototype.clearBoard = function() {
 
 //1. PLAY THE GAME.
 
-function playRound() {
+Blick. playRound() {
   $('#infoText').text("remember the colours.")
   correctGrid  = makeGrid();
   selectedGrid = [];
