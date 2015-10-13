@@ -1,4 +1,3 @@
-
 body {
   font-family: "proxima-nova-1", "proxima-nova-2", Helvetica, sans-serif;
   background-color: #78909C;
@@ -52,7 +51,7 @@ body {
 }
 
 #letsblick {
-  margin: 4% 32%;
+  margin: 4% 40%;
   font-size: 26px;
   line-height: 150%;
   letter-spacing: -2px;
@@ -113,7 +112,7 @@ ul {
   border: 6px solid white;
   margin-bottom: 12px;
   box-sizing: border-box;
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
 #info {
@@ -161,7 +160,7 @@ li {
   box-sizing: border-box;
   width: 20%;
   height: 20%;
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .green {
@@ -265,10 +264,12 @@ li {
 
   #info {
     left: 80%;
+    margin-top: 15px;
   }
 
   #scores {
     left: 5%;
+    margin-top: 15px;
   }
 
   ul {
@@ -276,6 +277,7 @@ li {
     height: 50vw; 
     left: 24.5%; 
     border: 3px solid white;
+    margin-top: 15px;
   }
 
   #scores div {

@@ -24,7 +24,7 @@ $(function responsiveOverlay(){
     $('#playerTwoTurn').remove();
   } else if (document.documentElement.clientWidth <= 840){
     $('#overlay1').html("<h2>BLICK.</h2><div id='letsblick'>let's blick.</div>");
-    $('#overlay1').css("width", "51.5vw").css("height", "100%").css("left", "24.5%").css("top","0px");
+    $('#overlay1').css("width", "51.5vw").css("height", "51.5vw").css("left", "24.5%").css("top","15px");
     $('#overlay0').remove();
     $('#overlay2').remove();
     $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "60px").css("border", "2px solid #78909C").css("height", "60px");
@@ -281,17 +281,17 @@ function winnerMessage() {
   if (playerOneScore > playerTwoScore) {
     winner = 'player one';
     playerOneWins++;
-    $('#infoText').text(winner + ' wins, press start to start again.');
+    $('#infoText').text(winner + ' wins, press start to replay.');
     $('#playerOneWins').text('player one:' + playerOneWins);
 
   } else if (playerTwoScore > playerOneScore) {
     winner = 'player two';
     playerTwoWins++;
-    $('#infoText').text(winner + ' wins, press start to start again.');
+    $('#infoText').text(winner + ' wins, press start to replay.');
     $('#playerOneWins').text('player one:' + playerTwoWins);
   } else if (playerOneScore === playerTwoScore) {
     winner = 'tie';
-    $('#infoText').text("its a draw, press start to start again.");
+    $('#infoText').text("its a draw, press start to replay.");
   }
   resetGame();
 }
