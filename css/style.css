@@ -34,7 +34,7 @@ body {
 }
 
 #overlay1 p {
-  text-align: center;
+  text-align: left;
   font-size: 15px;
   padding: 8px;
   margin: none;
@@ -91,7 +91,8 @@ h3 {
 ul {
   margin: 30px auto;
   border: 5px solid white;
-  width: 39.2vw;
+  border-bottom: 8px solid white;
+  width: 39vw;
   height: 39vw;
   position: absolute;
   left: 30%;
