@@ -259,7 +259,7 @@ li {
   }
 
   p {
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0px;
   }
 
@@ -298,8 +298,8 @@ li {
   }
 
   #infoText {
-    font-size: 12px; 
-    line-height: 12px; 
+    font-size: 16px; 
+    line-height: 16px; 
     height: 34.5vw; 
     padding: 3px;
   }
@@ -311,5 +311,9 @@ li {
     border: 1px solid white;
     font-size:10px;
     line-height: 80%;
+  }
+
+  #gridSize h2 {
+    font-size: 22px;
   }
 }

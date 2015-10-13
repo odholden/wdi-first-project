@@ -31,7 +31,7 @@ $(function responsiveOverlay(){
     $('#playerOneTurn').remove();
     $('#playerTwoTurn').remove();
     $('#totalScores').remove();
-    $('p').css("font-size", "10px").css("padding","4px 20px");
+    $('p').css("font-size", "14px").css("padding","4px 20px");
 
     };
 
@@ -253,15 +253,23 @@ function updateScore() {
 function compareGrids(correctGrid, selectedGrid) {
   var score = 0;
   for(var i = 0; i <correctGrid.length; i++){
+
     if (correctGrid[i] === selectedGrid[i]) score++
   }
   console.log(score);
   if (turn % 1 != 0) {
     playerOneScore = playerOneScore + score;
+    if (document.documentElement.clientWidth < 860) {
     $('#' + player).text("score: " + playerOneScore);
+    } else {
+      $('#' + player).text("score: " + playerOneScore);
+    }
   } else {
-    playerTwoScore = playerTwoScore + score;
-    $('#' + player).text("score: " + playerTwoScore);
+    if (document.documentElement.clientWidth < 860) {
+      $('#' + player).text("score: " + playerOneScore);
+      } else {
+        $('#' + player).text(playerOneScore);
+      }
   }
   $('#' + turnCounter).text("turns taken: " + Math.ceil(turn));
   $('#infoText').text("you scored " + score + ".");
