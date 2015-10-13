@@ -27,7 +27,7 @@ $(function responsiveOverlay(){
     $('#overlay1').css("width", "51.5vw").css("height", "51.5vw").css("left", "24.5%").css("top","15px");
     $('#overlay0').remove();
     $('#overlay2').remove();
-    $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "60px").css("border", "2px solid #78909C").css("height", "60px").css("line-height","60px").css("margin-top","0");
+    $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "60px").css("border", "2px solid #78909C").css("height", "22px").css("line-height","22px").css("margin-top","0");
     $('#playerOneTurn').remove();
     $('#playerTwoTurn').remove();
     $('#totalScores').remove();
