@@ -32,6 +32,8 @@ $(function responsiveOverlay(){
     $('#playerTwoTurn').remove();
     $('#totalScores').remove();
     $('p').css("font-size", "14px").css("padding","2px 20px");
+    $('#playerOneScore').text("0");
+    $('#playerTwoScore').text("0");
 
     };
 
