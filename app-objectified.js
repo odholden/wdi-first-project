@@ -37,6 +37,10 @@ Blick.prototype.responsiveOverlay = function(){
     $('#playerTwoTurn').remove();
     $('#totalScores').remove();
     };
+
+  if (document.documentElement.clientWidth <= 660) {
+    $('p').css("font-size", "12px");
+  }
   $('#letsblick').on("click", this.setup.bind(this));  
 };
 
