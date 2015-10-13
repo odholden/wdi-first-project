@@ -1,23 +1,28 @@
-var turn           = 0;
-var turnNumber     = 3;
-var playerOneScore = 0;
-var playerTwoScore = 0;
-var playerOneWins  = 0;
-var playerTwoWins  = 0;
-var gridSize       = 25;
-var correctGrid, 
-    selectedGrid,
-    player,
-    turnCounter,
-    winner;
+document.addEventListener("DOMContentLoaded", function(){ 
+  new Blick() 
+});
 
-$(function responsiveOverlay(){
+function Blick() {  
+  this.turn           = 0;
+  this.turnNumber     = 3;
+  this.playerOneScore = 0;
+  this.playerTwoScore = 0;
+  this.playerOneWins  = 0;
+  this.playerTwoWins  = 0;
+  this.gridSize       = 25;
+  this.correctGrid, 
+  this.selectedGrid,
+  this.player,
+  this.turnCounter,
+  this.winner;
+}
 
+
+Blick.prototype.responsiveOverlay = function(){
   if (document.documentElement.clientWidth >= 960) {    
     $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>each player has three turns.</p><p>choose the biggest grid you dare.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
       $('#overlay1').css("padding", "0 15px");
       $('p').css("font-size", "14px");
-
   } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 840){
     $('#overlay1').html("<h2>welcome to blick.</h2><div id='letsblick'>let's blick.</div>");
     $('#playerOneTurn').remove();
@@ -32,40 +37,40 @@ $(function responsiveOverlay(){
     $('#playerTwoTurn').remove();
     $('#totalScores').remove();
     };
-  $('#letsblick').on("click", setup);  
-});
+  $('#letsblick').on("click", this.setup.bind(this));  
+};
 
-function setup() {
+Blick.prototype.setup = function() {
   $('#overlay0').fadeOut("slow");
   $('#overlay1').fadeOut("slow");
   $('#overlay2').fadeOut("slow");
   $('#infoText').text("player one goes first, press start to begin.");
-  $('#small').on("click", makeGridSmall);
-  $('#medium').on("click", makeGridMedium);
-  $('#large').on("click", makeGridLarge);
-  $('#start').on("click", startGame);
+  $('#small').on("click", this.makeGridSmall.bind(this));
+  $('#medium').on("click", this.makeGridMedium.bind(this));
+  $('#large').on("click", this.makeGridLarge.bind(this));
+  $('#start').on("click", this.startGame.bind(this));
 }
 
-function makeGridSmall() {
+Blick.prototype.makeGridSmall = function() {
   gridSize = 16;
   $('ul').html('<li id="0"></li><li id="15"></li><li id="14"></li><li id="13"></li><li id="1"></li><li id="2"></li><li id="11"></li><li id="12"></li><li id="4"></li><li id="3"></li><li id="10"></li><li id="9"></li><li id="5"></li><li id="6"></li><li id="7"></li><li id="8"></li>');
   $('li').css("width", "25%").css("height", "25%");
 }
 
-function makeGridMedium() {
+Blick.prototype.makeGridMedium = function() {
   gridSize = 25;
   $('ul').html('<li id="0"></li><li id="1"></li><li id="18"></li><li id="17"></li><li id="16"></li><li id="3"></li><li id="2"></li><li id="19"></li><li id="20"></li><li id="15"></li><li id="4"></li><li id="23"></li><li id="22"></li><li id="21"></li><li id="14"></li><li id="5"></li><li id="24"></li><li id="9"></li><li id="10"></li><li id="13"></li><li id="6"></li><li id="7"></li><li id="8"></li><li id="11"></li><li id="12"></li>');
   $('li').css("width", "20%").css("height", "20%");
 }
 
-function makeGridLarge() {
+Blick.prototype.makeGridLarge = function() {
   gridSize = 36;
   $('ul').html('<li id="16"></li><li id="15"></li><li id="14"></li><li id="13"></li><li id="10"></li><li id="9"></li><li id="17"></li><li id="18"></li><li id="19"></li><li id="12"></li><li id="11"></li><li id="8"></li><li id="22"></li><li id="21"></li><li id="20"></li><li id="35"></li><li id="34"></li><li id="7"></li><li id="23"></li><li id="30"></li><li id="31"></li><li id="32"></li><li id="33"></li><li id="6"></li><li id="24"></li><li id="29"></li><li id="28"></li><li id="3"></li><li id="4"></li><li id="5"></li><li id="25"></li><li id="26"></li><li id="27"></li><li id="2"></li><li id="1"></li><li id="0"></li>');
   $('li').css("width", "16.666666667%").css("height", "16.666666667%");
 }
 
-function startGame() {
-  clearBoard();
+Blick.prototype.startGame = function() {
+  this.clearBoard();
   $('li').css("background-color","none");
   $('#color').removeClass();
   turn+= 0.5;
@@ -73,15 +78,15 @@ function startGame() {
     player        = 'playerOneScore';
     turnCounter   = 'playerOneTurn';
   } else {
-    player        = 'playerTwoScore';
-    turnCounter   = 'playerTwoTurn';
+    this.player        = 'playerTwoScore';
+    this.turnCounter   = 'playerTwoTurn';
   };
-  if (turn <= turnNumber) {
-    playRound();
+  if (turn <= this.turnNumber) {
+    this.playRound();
   };
 }
 
-function clearBoard() {
+Blick.prototype.clearBoard = function() {
   $('li').removeClass();
 }
 
