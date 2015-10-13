@@ -95,7 +95,7 @@ h3 {
 ul {
   margin: 30px auto;
   border: 5px solid white;
-  width: 39vw;
+  width: 39.2vw;
   height: 39vw;
   position: absolute;
   left: 30%;
@@ -308,5 +308,6 @@ li {
     width: 80%;
     border: 1px solid white;
     font-size: 8px;
+    line-height: 80%;
   }
 }
