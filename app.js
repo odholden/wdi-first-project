@@ -31,7 +31,7 @@ $(function responsiveOverlay(){
     $('#playerOneTurn').remove();
     $('#playerTwoTurn').remove();
     $('#totalScores').remove();
-    $('p').css("font-size", "14px").css("padding","4px 20px");
+    $('p').css("font-size", "14px").css("padding","2px 20px");
 
     };
 
