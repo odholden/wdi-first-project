@@ -258,7 +258,6 @@ function compareGrids(correctGrid, selectedGrid) {
 
     if (correctGrid[i] === selectedGrid[i]) score++
   }
-  console.log(score);
   if (turn % 1 != 0) {
     playerOneScore = playerOneScore + score;
     if (document.documentElement.clientWidth < 860) {
