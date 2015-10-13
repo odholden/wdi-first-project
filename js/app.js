@@ -19,24 +19,20 @@ $(function overlay(){
       $('#overlay1').css("padding", "0 15px");
       $('p').css("font-size", "16px");
 
-    } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 640){
+    } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 840){
       $('#overlay1').html("<h2>welcome to blick.</h2><div id='letsblick'>let's blick.</div>");
       $('#playerOneTurn').remove();
       $('#playerTwoTurn').remove();
-    } else if (document.documentElement.clientWidth <= 640){
+    } else if (document.documentElement.clientWidth <= 840){
       $('#overlay1').html("<h2>BLICK.</h2><div id='letsblick'>let's blick.</div>");
       $('#overlay1').css("width", "51.5vw").css("height", "51.5vw").css("left", "24.5%").css("top","30px");
       $('#overlay0').remove();
       $('#overlay2').remove();
-
       $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "70px").css("border", "2px solid #78909C");
       $('#playerOneTurn').remove();
       $('#playerTwoTurn').remove();
       $('#totalScores').remove();
-      
-
     }  }).resize();
-
   $('#letsblick').on("click", setup);  
 });
 
@@ -45,7 +41,15 @@ function setup() {
   $('#overlay1').fadeOut("slow");
   $('#overlay2').fadeOut("slow");
   $('#infoText').text("player one goes first, press start to begin.");
+  $('#small').on("click", changeGridSize(16));
+  $('#medium').on("click", changeGridSize(25));
+  $('#large').on("click", changeGridSize(36));
   $('#start').on("click", startGame);
+}
+
+function changeGridSize(size) {
+  gridSize = size;
+  console.log(gridSize);
 }
 
 function startGame() {

@@ -18,11 +18,11 @@ $(function overlay(){
       $('#overlay1').css("padding", "0 15px");
       $('p').css("font-size", "16px");
 
-    } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 640){
+    } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 840){
       $('#overlay1').html("<h2>welcome to blick.</h2><div id='letsblick'>let's blick.</div>");
       $('#playerOneTurn').remove();
       $('#playerTwoTurn').remove();
-    } else if (document.documentElement.clientWidth <= 640){
+    } else if (document.documentElement.clientWidth <= 840){
       $('#overlay1').html("<h2>BLICK.</h2><div id='letsblick'>let's blick.</div>");
       $('#overlay1').css("width", "51.5vw").css("height", "51.5vw").css("left", "24.5%").css("top","30px");
       $('#overlay0').remove();
