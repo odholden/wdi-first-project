@@ -267,6 +267,7 @@ function compareGrids(correctGrid, selectedGrid) {
       $('#' + player).text("score: " + playerOneScore);
     }
   } else {
+    playerTwoScore = playerTwoScore + score;
     if (document.documentElement.clientWidth < 860) {
       $('#' + player).text(playerTwoScore);
       } else {

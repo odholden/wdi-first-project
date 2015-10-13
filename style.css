@@ -254,7 +254,7 @@ li {
     font-size: 40px;
     letter-spacing: 0px; 
     line-height: 100%; 
-    margin: auto 30%; 
+    margin: auto 20%; 
 
   }
 
@@ -314,6 +314,6 @@ li {
   }
 
   #gridSize h2 {
-    font-size: 22px;
+    font-size: 18px;
   }
 }
