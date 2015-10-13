@@ -262,15 +262,15 @@ function compareGrids(correctGrid, selectedGrid) {
   if (turn % 1 != 0) {
     playerOneScore = playerOneScore + score;
     if (document.documentElement.clientWidth < 860) {
-    $('#' + player).text("score: " + playerOneScore);
+    $('#' + player).text(playerOneScore);
     } else {
       $('#' + player).text("score: " + playerOneScore);
     }
   } else {
     if (document.documentElement.clientWidth < 860) {
-      $('#' + player).text("score: " + playerOneScore);
+      $('#' + player).text(playerTwoScore);
       } else {
-        $('#' + player).text(playerOneScore);
+        $('#' + player).text("score: " + playerTwoScore);
       }
   }
   $('#' + turnCounter).text("turns taken: " + Math.ceil(turn));
