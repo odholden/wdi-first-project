@@ -13,25 +13,27 @@ var correctGrid,
 
 $(function responsiveOverlay(){
 
+  $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>each player has three turns.</p><p>choose the biggest grid you dare.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
   if (document.documentElement.clientWidth >= 960) {    
-    $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the red box.</p><p>each player has three turns.</p><p>choose the biggest grid you dare.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
-      $('#overlay1').css("padding", "0 15px");
-      $('p').css("font-size", "14px");
+    $('#overlay1').css("padding", "0 15px");
+    $('p').css("font-size", "12px");
 
   } else if (document.documentElement.clientWidth < 960 && document.documentElement.clientWidth > 840){
-    $('#overlay1').html("<h2>welcome to blick.</h2><div id='letsblick'>let's blick.</div>");
+    $('p').css("font-size", "11px");
     $('#playerOneTurn').remove();
     $('#playerTwoTurn').remove();
   } else if (document.documentElement.clientWidth <= 840){
-    $('#overlay1').html("<h2>BLICK.</h2><div id='letsblick'>let's blick.</div>");
     $('#overlay1').css("width", "51.5vw").css("height", "51.5vw").css("left", "24.5%").css("top","15px");
     $('#overlay0').remove();
     $('#overlay2').remove();
-    $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "60px").css("border", "2px solid #78909C").css("height", "60px");
+    $('#letsblick').css("font-size","12px").css("letter-spacing","0").css("width", "60px").css("border", "2px solid #78909C").css("height", "60px").css("line-height","60px").css("margin-top","0");
     $('#playerOneTurn').remove();
     $('#playerTwoTurn').remove();
     $('#totalScores').remove();
+    $('p').css("font-size", "10px").css("padding","4px 20px");
+
     };
+
   $('#letsblick').on("click", setup);  
 });
 
