@@ -10,4 +10,4 @@ Blick is an original game design that uses a randomly generated grid of colours 
 
 [Click here to play blick!](https://www.playblick.herokuapp.com)
 
-![alt text](https://raw.github.com/odholden/wdi-first-project/blob/master/images/blick1.png)
+![alt text](https://github.com/odholden/wdi-first-project/blob/master/images/blick1.png)
