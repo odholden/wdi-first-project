@@ -15,7 +15,7 @@ var correctGrid,
 
 $(function responsiveOverlay(){                                                   //MENTION OVERLAY AND RESPONSIVE
 
-  // $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the top left box.</p><p>each player has three turns.</p><p>choose the biggest grid you dare.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
+  $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the top left box.</p><p>each player has three turns.</p><p>choose the biggest grid you dare.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
   if (document.documentElement.clientWidth >= 960) {    
     $('#overlay1').css("padding", "0 15px");
     $('p').css("font-size", "12px");
@@ -95,13 +95,13 @@ function clearBoard() {
 //1. PLAY THE GAME.
 
 function playRound() {
-  $('#infoText').text("remember the colours.")
+  $('#infoText').text("remember the colours.");
   correctGrid  = makeGrid();
   selectedGrid = [];
   setTimeout(selectColors, 5000); 
-  setTimeout(updateScore, 39000);
-  setTimeout(showCorrectBoard, 43000);                                                 
-  setTimeout(scoreMessage, 47000);
+  setTimeout(updateScore, 38000);
+  setTimeout(showCorrectBoard(correctGrid), 41000);                                                 
+  setTimeout(scoreMessage, 44000);
 }
 
 //1.1 MAKE THE GRID.
@@ -280,13 +280,20 @@ function compareGrids(correctGrid, selectedGrid) {
   $('#infoText').text("you scored " + score + ".");
 }
 
+function showCorrectBoard(correctGrid) {
+  for (var i = 0; i < correctGrid.length; i++) {
+    $('li#' + [i]).css("background-color", correctGrid[i]);
+  }
+  $('#infoText').text("here is the correct board.");
+}
+
 //2. DECLARE WINNER 
 
 function scoreMessage() {
   $('li').removeClass();
   if (turn === turnNumber) {
     winnerMessage();
-  } else if (turn % 1 != 0) {                                                    //MENTION TURN COUNTER AGAIN
+  } else if (turn % 1 != 0) {                                                    
     $('#infoText').text("time for player two, press start to begin");
   } else {
     $('#infoText').text("time for player one, press start to begin");
