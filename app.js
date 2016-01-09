@@ -43,6 +43,7 @@ $(function responsiveOverlay(){                                                 
 });
 
 function setup() {
+  var self = this;
   $('#overlay0').fadeOut("slow");
   $('#overlay1').fadeOut("slow");
   $('#overlay2').fadeOut("slow");
@@ -97,10 +98,11 @@ function clearBoard() {
 function playRound() {
   $('#infoText').text("remember the colours.");
   correctGrid  = makeGrid();
+  self.correctGrid = correctGrid;
   selectedGrid = [];
   setTimeout(selectColors, 5000); 
   setTimeout(updateScore, 38000);
-  setTimeout(showCorrectBoard(correctGrid), 41000);                                                 
+  setTimeout(showCorrectBoard, 41000);                                                 
   setTimeout(scoreMessage, 44000);
 }
 
@@ -112,7 +114,6 @@ function makeGrid() {
   for (var i = 0; i < colors.length; i++) fillGrid(blocks[i], colors[i]);
   correctGrid = [];
   setTimeout(storeCorrect, 700); 
-  console.log(correctGrid);                                                         //MENTION GRID FILLING
   return correctGrid;
 }
 
@@ -244,7 +245,6 @@ function storeSelections() {
   for (var i = 0; i < gridSize;i++) {
     selectedGrid.push($('li#' + [i]).css("background-color"));
   }
-  console.log(selectedGrid);
   return selectedGrid;
 }
 
@@ -280,7 +280,9 @@ function compareGrids(correctGrid, selectedGrid) {
   $('#infoText').text("you scored " + score + ".");
 }
 
-function showCorrectBoard(correctGrid) {
+function showCorrectBoard() {
+  console.log(self.correctGrid);
+  var correctGrid = self.correctGrid;
   for (var i = 0; i < correctGrid.length; i++) {
     $('li#' + [i]).css("background-color", correctGrid[i]);
   }
@@ -291,6 +293,7 @@ function showCorrectBoard(correctGrid) {
 
 function scoreMessage() {
   $('li').removeClass();
+  $('li').css("background-color", "");
   if (turn === turnNumber) {
     winnerMessage();
   } else if (turn % 1 != 0) {                                                    
