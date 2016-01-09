@@ -15,7 +15,7 @@ var correctGrid,
 
 $(function responsiveOverlay(){                                                   //MENTION OVERLAY AND RESPONSIVE
 
-  $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the top left box.</p><p>each player has three turns.</p><p>choose the biggest grid you dare.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
+  // $('#overlay1').fadeIn("slow").html("<h2>welcome to blick.</h2><p>blick is a two player game. this is how it works.</p><p>a board of colors will appear for five seconds.</p><p>you must recreate it by adding color to the correct squares in a blank grid.</p><p>you have five seconds to add each color to the board.</p><p>each color will be shown in the top left box.</p><p>each player has three turns.</p><p>choose the biggest grid you dare.</p><p>happy blicking.</p><div id='letsblick'>let's blick.</div>");
   if (document.documentElement.clientWidth >= 960) {    
     $('#overlay1').css("padding", "0 15px");
     $('p').css("font-size", "12px");
@@ -99,8 +99,9 @@ function playRound() {
   correctGrid  = makeGrid();
   selectedGrid = [];
   setTimeout(selectColors, 5000); 
-  setTimeout(updateScore, 37000);                                                  //MENTION SET TIMEOUTS
-  setTimeout(scoreMessage, 39000);
+  setTimeout(updateScore, 39000);
+  setTimeout(showCorrectBoard, 43000);                                                 
+  setTimeout(scoreMessage, 47000);
 }
 
 //1.1 MAKE THE GRID.
