@@ -257,9 +257,9 @@ function updateScore() {
 
 function compareGrids(correctGrid, selectedGrid) {
   var score = 0;
-  for(var i = 0; i <correctGrid.length; i++){
-
+  for(var i = 0; i <correctGrid.length; i++){ 
     if (correctGrid[i] === selectedGrid[i]) score++
+    }
   }
   if (turn % 1 != 0) {
     playerOneScore = playerOneScore + score;
@@ -309,7 +309,6 @@ function winnerMessage() {
     playerOneWins++;
     $('#infoText').text(winner + ' wins, press start to replay.');
     $('#playerOneWins').text('player one:' + playerOneWins);
-
   } else if (playerTwoScore > playerOneScore) {
     winner = 'player two';
     playerTwoWins++;
